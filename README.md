@@ -1,10 +1,6 @@
 # 🧬 Saliva-Based Ulcer Risk Assessment System  
 
-![Platform](https://img.shields.io/badge/Platform-Python%20%7C%20Web-blue)  
-![Language](https://img.shields.io/badge/Language-Python-orange)  
-![Domain](https://img.shields.io/badge/Domain-Healthcare%20AI-green)  
-![Algorithm](https://img.shields.io/badge/Algorithm-SWBRA-red)  
-![Status](https://img.shields.io/badge/Project-Academic%20Research-purple)
+![Platform](https://img.shields.io/badge/Platform-Python%20%7C%20Web-blue)  ![Language](https://img.shields.io/badge/Language-Python-orange)  ![Domain](https://img.shields.io/badge/Domain-Healthcare%20AI-green)  ![Algorithm](https://img.shields.io/badge/Algorithm-SWBRA-red)  ![Status](https://img.shields.io/badge/Project-Academic%20Research-purple)
 
 ---
 
