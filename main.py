@@ -43,7 +43,7 @@ class LoginPage(QWidget):
         layout.setAlignment(Qt.AlignCenter)
         layout.setSpacing(20)
 
-        title = QLabel("🩺 Updoman AI Health Intelligence Portal")
+        title = QLabel("Saliva-Based Disease & Cancer Risk Assessment System")
         title.setStyleSheet("font-size:28px; font-weight:bold;")
         title.setAlignment(Qt.AlignCenter)
         layout.addWidget(title)
@@ -255,7 +255,7 @@ Recommendations:
         styles = getSampleStyleSheet()
         story = []
 
-        story.append(Paragraph("Ulcer AI Clinical Report", styles['Title']))
+        story.append(Paragraph("Saliva-Based Disease & Cancer Risk Assessment System Report", styles['Title']))
         story.append(Spacer(1,12))
         story.append(Paragraph(self.latest_text.replace("\n","<br/>"), styles['Normal']))
         doc.build(story)
