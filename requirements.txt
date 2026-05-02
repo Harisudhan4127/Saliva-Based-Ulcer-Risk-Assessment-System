@@ -1,8 +1,7 @@
-PySide6
+pyinstaller
+numpy
 pandas
-joblib
-cryptography
-requests
-python-dotenv
-reportlab
 scikit-learn
+PyQt5
+reportlab
+joblib

@@ -1,5 +1,65 @@
-.env
+# Python cache
 __pycache__/
-*.pyc
-User_data/
-*.csv
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Environment variables
+.env
+*.env
+
+# PyInstaller
+build/
+dist/
+*.spec
+
+# Executables
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Logs
+*.log
+
+# IDE / Editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Temporary files
+*.tmp
+*.bak
+
+# Package files
+*.egg-info/
+.eggs/
+
+# Large ML / data files (optional)
+*.h5
+*.pt
+*.pth
+*.pkl
+
+# Ignore internal PyInstaller dist dependencies
+dist/*/_internal/
+
+# Ignore build artifacts inside project
+build/UlcerRiskAI/
+
+# Keep assets (important files)
+!assets/
