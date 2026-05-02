@@ -1,5 +1,6 @@
 import sys
 import os
+from splash import show_splash
 import joblib
 import pandas as pd
 import uuid
@@ -43,7 +44,7 @@ class LoginPage(QWidget):
         layout.setAlignment(Qt.AlignCenter)
         layout.setSpacing(20)
 
-        title = QLabel("Saliva-Based Disease & Cancer Risk Assessment System")
+        title = QLabel("Saliva-Based Ulcer Risk Assessment System")
         title.setStyleSheet("font-size:28px; font-weight:bold;")
         title.setAlignment(Qt.AlignCenter)
         layout.addWidget(title)
@@ -65,7 +66,7 @@ class LoginPage(QWidget):
         self.setLayout(layout)
 
     def login(self):
-        if self.user.text() == "admin" and self.pwd.text() == "1234":
+        if self.user.text() == "admin" and self.pwd.text() == "admin@123":
             self.stacked.setCurrentIndex(1)
         else:
             QMessageBox.warning(self,"Error","Invalid Credentials")
@@ -103,7 +104,7 @@ class UlcerAI(QWidget):
         main_layout.setContentsMargins(20,20,20,20)
         main_layout.setSpacing(15)
 
-        header = QLabel("Saliva-Based Disease & Cancer Risk Assessment System")
+        header = QLabel("Saliva-Based Ulcer Risk Assessment System")
         header.setAlignment(Qt.AlignCenter)
         header.setStyleSheet("font-size:24px; font-weight:bold;")
         main_layout.addWidget(header)
@@ -255,7 +256,7 @@ Recommendations:
         styles = getSampleStyleSheet()
         story = []
 
-        story.append(Paragraph("Saliva-Based Disease & Cancer Risk Assessment System Report", styles['Title']))
+        story.append(Paragraph("Saliva-Based Ulcer Risk Assessment System Report", styles['Title']))
         story.append(Spacer(1,12))
         story.append(Paragraph(self.latest_text.replace("\n","<br/>"), styles['Normal']))
         doc.build(story)
