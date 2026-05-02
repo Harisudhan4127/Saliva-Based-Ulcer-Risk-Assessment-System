@@ -1,0 +1,8 @@
+PySide6
+pandas
+joblib
+cryptography
+requests
+python-dotenv
+reportlab
+scikit-learn

@@ -1,29 +1,28 @@
-import sys
-import os
-from splash import show_splash
+import sys, os
 import joblib
 import pandas as pd
 import uuid
 from datetime import datetime
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
-from reportlab.lib.styles import getSampleStyleSheet
-from PyQt5.QtWidgets import QSizePolicy
-from PyQt5.QtWidgets import (
-    QApplication, QWidget, QLabel, QLineEdit,
-    QPushButton, QVBoxLayout, QHBoxLayout,
-    QComboBox, QGridLayout, QMessageBox,
-    QScrollArea, QStackedWidget, QFrame
-)
+
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
 
-# ================= SAFE PATH HANDLING =================
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+from updater import check_update
+
+# ================= SAFE PATH =================
+if getattr(sys, 'frozen', False):
+    BASE_DIR = sys._MEIPASS
+else:
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 model_path = os.path.join(BASE_DIR, "src", "data.pkl")
 user_data_dir = os.path.join(BASE_DIR, "User_data")
 os.makedirs(user_data_dir, exist_ok=True)
 
 model = joblib.load(model_path)
+
+CURRENT_VERSION = "v1.0.0"
 
 feature_names = [
     "Age","Gender","Spicy_Food","Tobacco","Alcohol",
@@ -33,37 +32,53 @@ feature_names = [
     "Day2_pH_Before","Day2_pH_After"
 ]
 
-# ================= LOGIN PAGE =================
+# ================= UPDATE DIALOG =================
+class UpdateDialog(QDialog):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Updating...")
+        self.setFixedSize(300, 120)
+
+        layout = QVBoxLayout(self)
+
+        self.label = QLabel("Checking for updates...")
+        self.bar = QProgressBar()
+
+        layout.addWidget(self.label)
+        layout.addWidget(self.bar)
+
+    def set_progress(self, value):
+        self.bar.setValue(value)
+
+    def set_status(self, text):
+        self.label.setText(text)
+
+# ================= LOGIN =================
 class LoginPage(QWidget):
     def __init__(self, stacked):
         super().__init__()
         self.stacked = stacked
-        self.setStyleSheet(self.style())
+        self.setStyleSheet("background:#0f172a; color:white;")
 
-        layout = QVBoxLayout()
-        layout.setAlignment(Qt.AlignCenter)
-        layout.setSpacing(20)
+        layout = QVBoxLayout(self)
 
-        title = QLabel("Saliva-Based Ulcer Risk Assessment System")
-        title.setStyleSheet("font-size:28px; font-weight:bold;")
+        title = QLabel("Ulcer Risk AI")
         title.setAlignment(Qt.AlignCenter)
+        title.setStyleSheet("font-size:28px; font-weight:bold;")
         layout.addWidget(title)
 
         self.user = QLineEdit()
         self.user.setPlaceholderText("Username")
-        layout.addWidget(self.user)
 
         self.pwd = QLineEdit()
         self.pwd.setPlaceholderText("Password")
         self.pwd.setEchoMode(QLineEdit.Password)
-        layout.addWidget(self.pwd)
 
         btn = QPushButton("Login")
-        btn.setMinimumHeight(40)
         btn.clicked.connect(self.login)
-        layout.addWidget(btn)
 
-        self.setLayout(layout)
+        for w in [self.user, self.pwd, btn]:
+            layout.addWidget(w)
 
     def login(self):
         if self.user.text() == "admin" and self.pwd.text() == "admin@123":
@@ -71,62 +86,28 @@ class LoginPage(QWidget):
         else:
             QMessageBox.warning(self,"Error","Invalid Credentials")
 
-    def style(self):
-        return """
-        QWidget {background:#0f172a; color:white; font-family:Segoe UI;}
-        QLineEdit {
-            padding:10px;
-            border-radius:10px;
-            background:white;
-            color:black;
-        }
-        QPushButton {
-            background:#3b82f6;
-            color:white;
-            border-radius:10px;
-        }
-        QPushButton:hover {background:#2563eb;}
-        """
-
-# ================= MAIN APPLICATION =================
+# ================= MAIN APP =================
 class UlcerAI(QWidget):
     def __init__(self):
         super().__init__()
 
-        self.setMinimumSize(1000, 700)
+        self.setMinimumSize(1000,700)
         self.patient_id = "PAT-" + str(uuid.uuid4())[:8].upper()
-        self.latest_data = None
-        self.latest_text = ""
 
-        self.setStyleSheet(self.style())
+        layout = QVBoxLayout(self)
 
-        main_layout = QVBoxLayout(self)
-        main_layout.setContentsMargins(20,20,20,20)
-        main_layout.setSpacing(15)
+        title = QLabel("Ulcer Risk AI System")
+        title.setAlignment(Qt.AlignCenter)
+        title.setStyleSheet("font-size:20px; font-weight:bold;")
+        layout.addWidget(title)
 
-        header = QLabel("Saliva-Based Ulcer Risk Assessment System")
-        header.setAlignment(Qt.AlignCenter)
-        header.setStyleSheet("font-size:24px; font-weight:bold;")
-        main_layout.addWidget(header)
-
-        id_label = QLabel(f"Patient ID: {self.patient_id}")
-        id_label.setAlignment(Qt.AlignCenter)
-        id_label.setStyleSheet("color:#64748b;")
-        main_layout.addWidget(id_label)
-
-        content_layout = QHBoxLayout()
-        content_layout.setSpacing(20)
-        main_layout.addLayout(content_layout, stretch=1)
-
-        # -------- LEFT FORM --------
-        scroll = QScrollArea()
-        scroll.setWidgetResizable(True)
-
-        form_container = QWidget()
-        form_layout = QGridLayout(form_container)
-        form_layout.setSpacing(12)
+        # VERSION DISPLAY
+        version_label = QLabel(f"Version: {CURRENT_VERSION}")
+        version_label.setAlignment(Qt.AlignCenter)
+        layout.addWidget(version_label)
 
         self.inputs = {}
+        grid = QGridLayout()
 
         combos = {
             "Gender":["Male","Female"],
@@ -138,182 +119,86 @@ class UlcerAI(QWidget):
             "Empty_Stomach_Pain":["Yes","No"]
         }
 
-        for row, name in enumerate(feature_names):
+        for i, name in enumerate(feature_names):
             label = QLabel(name.replace("_"," "))
-            form_layout.addWidget(label, row, 0)
 
             if name in combos:
-                widget = QComboBox()
-                widget.addItems(combos[name])
+                inp = QComboBox()
+                inp.addItems(combos[name])
             else:
-                widget = QLineEdit()
+                inp = QLineEdit()
 
-            widget.setMinimumHeight(30)
-            form_layout.addWidget(widget, row, 1)
-            self.inputs[name] = widget
+            grid.addWidget(label, i, 0)
+            grid.addWidget(inp, i, 1)
+            self.inputs[name] = inp
 
-        scroll.setWidget(form_container)
-        content_layout.addWidget(scroll, stretch=3)
+        layout.addLayout(grid)
 
-        # -------- RIGHT RESULT PANEL --------
-        self.result_frame = QFrame()
-        self.result_frame.setStyleSheet(
-            "background:#0f172a; border-radius:15px; padding:20px;"
-        )
+        self.result = QLabel("Result will appear here")
+        layout.addWidget(self.result)
 
-        result_layout = QVBoxLayout(self.result_frame)
+        btn = QPushButton("Analyze")
+        btn.clicked.connect(self.predict)
+        layout.addWidget(btn)
 
-        self.result_label = QLabel("Result will appear here...")
-        self.result_label.setWordWrap(True)
-        self.result_label.setAlignment(Qt.AlignTop)
-        self.result_label.setStyleSheet("color:white; font-size:15px;")
-
-        result_layout.addWidget(self.result_label)
-        content_layout.addWidget(self.result_frame, stretch=2)
-
-        # -------- BUTTONS --------
-        button_layout = QHBoxLayout()
-        button_layout.setSpacing(20)
-
-        btn_predict = QPushButton("Analyze")
-        btn_pdf = QPushButton("Save PDF")
-        btn_export = QPushButton("Export History")
-
-        btn_predict.clicked.connect(self.predict)
-        btn_pdf.clicked.connect(self.save_pdf)
-        btn_export.clicked.connect(self.export_history)
-
-        for btn in [btn_predict, btn_pdf, btn_export]:
-            btn.setMinimumHeight(45)
-            btn.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
-            button_layout.addWidget(btn)
-
-        main_layout.addLayout(button_layout)
-
-    # ================= INPUT COLLECTION =================
-    def collect_input(self):
+    def collect(self):
         values = []
         for name in feature_names:
-            widget = self.inputs[name]
-            if isinstance(widget, QComboBox):
-                values.append(1 if widget.currentText() in ["Male","Yes"] else 0)
+            w = self.inputs[name]
+
+            if isinstance(w, QComboBox):
+                values.append(1 if w.currentText() in ["Male","Yes"] else 0)
             else:
-                values.append(float(widget.text()))
+                values.append(float(w.text()))
+
         return pd.DataFrame([values], columns=feature_names)
 
-    # ================= PREDICTION =================
     def predict(self):
         try:
-            df = self.collect_input()
-            self.latest_data = df
-
+            df = self.collect()
             prob = model.predict_proba(df)[0][1]
 
             if prob > 0.7:
-                risk = "HIGH RISK"
-                color = "#ef4444"
+                risk = "HIGH"
             elif prob > 0.3:
-                risk = "MODERATE RISK"
-                color = "#f59e0b"
+                risk = "MEDIUM"
             else:
-                risk = "LOW RISK"
-                color = "#22c55e"
+                risk = "LOW"
 
-            result_text = f"""
-Patient ID: {self.patient_id}
-
-Risk Probability: {prob*100:.2f}%
-Risk Level: {risk}
-
-Recommendations:
-• Maintain balanced diet
-• Avoid spicy & tobacco
-• Improve sleep quality
-• Reduce stress levels
-"""
-
-            self.latest_text = result_text
-            self.result_label.setStyleSheet(
-                f"color:{color}; font-size:16px;"
-            )
-            self.result_label.setText(result_text)
+            self.result.setText(f"Risk: {risk} ({prob*100:.2f}%)")
 
         except:
-            QMessageBox.warning(self,"Error","Please enter valid numeric inputs.")
+            QMessageBox.warning(self,"Error","Invalid Input")
 
-    # ================= SAVE PDF =================
-    def save_pdf(self):
-        if not self.latest_text:
-            QMessageBox.warning(self,"Error","Run prediction first.")
-            return
-
-        filename = os.path.join(
-            user_data_dir,
-            f"{self.patient_id}_Report.pdf"
-        )
-
-        doc = SimpleDocTemplate(filename)
-        styles = getSampleStyleSheet()
-        story = []
-
-        story.append(Paragraph("Saliva-Based Ulcer Risk Assessment System Report", styles['Title']))
-        story.append(Spacer(1,12))
-        story.append(Paragraph(self.latest_text.replace("\n","<br/>"), styles['Normal']))
-        doc.build(story)
-
-        QMessageBox.information(self,"Saved",f"Report saved successfully.")
-
-    # ================= EXPORT HISTORY =================
-    def export_history(self):
-        if self.latest_data is None:
-            QMessageBox.warning(self,"Error","Run prediction first.")
-            return
-
-        df = self.latest_data.copy()
-        df["Patient_ID"] = self.patient_id
-        df["Timestamp"] = datetime.now()
-
-        history_path = os.path.join(user_data_dir, "patient_history.csv")
-
-        df.to_csv(
-            history_path,
-            mode='a',
-            header=not os.path.exists(history_path),
-            index=False
-        )
-
-        QMessageBox.information(self,"Exported","Patient data saved.")
-
-    def style(self):
-        return """
-        QWidget {background:#f8fafc; font-family:Segoe UI;}
-        QLabel {font-size:14px;}
-        QLineEdit, QComboBox {
-            padding:6px;
-            border-radius:8px;
-            border:1px solid #cbd5e1;
-            background:white;
-        }
-        QPushButton {
-            background:#2563eb;
-            color:white;
-            padding:8px;
-            border-radius:10px;
-        }
-        QPushButton:hover {background:#1d4ed8;}
-        """
-
-# ================= START APPLICATION =================
+# ================= RUN =================
 app = QApplication(sys.argv)
 
-stacked = QStackedWidget()
-login = LoginPage(stacked)
+# ICON
+app.setWindowIcon(QIcon(os.path.join(BASE_DIR, "assets", "app.ico")))
+
+# UPDATE CHECK WITH UI
+dialog = UpdateDialog()
+dialog.show()
+
+def progress(val):
+    dialog.set_progress(val)
+
+def status(txt):
+    dialog.set_status(txt)
+
+check_update(progress, status)
+
+dialog.close()
+
+# MAIN WINDOW
+stack = QStackedWidget()
+login = LoginPage(stack)
 main = UlcerAI()
 
-stacked.addWidget(login)
-stacked.addWidget(main)
+stack.addWidget(login)
+stack.addWidget(main)
 
-stacked.resize(1100, 750)
-stacked.show()
+stack.resize(1000,700)
+stack.show()
 
 sys.exit(app.exec_())
