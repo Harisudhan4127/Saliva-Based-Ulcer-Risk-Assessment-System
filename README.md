@@ -260,7 +260,7 @@ joblib
 
 **Harisudhan**
 Final Year Project — AI-Based Healthcare System
-*B.Tech / B.E. in Computer Science / Artificial Intelligence*
+*B.Tech Artificial Intelligence and Machine Learning*
 
 ---
 
