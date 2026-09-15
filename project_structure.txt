@@ -1,4 +1,4 @@
-E:\Git file\Saliva-Based-Ulcer-Risk-Assessment-System
+D:\Git file\Saliva-Based-Ulcer-Risk-Assessment-System
 ├── 📁 assets
 │   ├── 📄 app.ico
 │   └── 📄 splash.png
@@ -6337,6 +6337,13 @@ E:\Git file\Saliva-Based-Ulcer-Risk-Assessment-System
 │       │   ├── 📄 vcruntime140.dll
 │       │   └── 📄 vcruntime140_1.dll
 │       └── 📄 UlcerRiskAI.exe
+├── 📁 Doc
+│   ├── 📄 Paper 1.pdf
+│   ├── 📄 Paper 2.pdf
+│   ├── 📄 Paper 3.pdf
+│   ├── 📄 Paper 4.pdf
+│   ├── 📄 Paper 5.pdf
+│   └── 📄 Paper 6.pdf
 ├── 📁 installer
 │   └── 📄 setup.iss
 ├── 📁 Output
@@ -6352,6 +6359,7 @@ E:\Git file\Saliva-Based-Ulcer-Risk-Assessment-System
 ├── 📄 BUILD_GUIDE.md
 ├── 📄 file_structure.py
 ├── 📄 main.py
+├── 📄 project_structure.txt
 ├── 📄 README.md
 ├── 📄 requirements.txt
 ├── 📄 secret_key.py
