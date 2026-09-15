@@ -159,7 +159,7 @@ def export_pdf(data: dict, save_path: str):
                                   fontName="Helvetica",    leading=14)
 
     header_table = Table(
-        [[Paragraph("ULCER RISK ASSESSMENT REPORT", header_style),
+        [[Paragraph("ULCER RISK REPORT", header_style),
           Paragraph(f"Version {CURRENT_VERSION}", sub_style)]],
         colWidths=[(W-40*mm)*0.72, (W-40*mm)*0.28]
     )
