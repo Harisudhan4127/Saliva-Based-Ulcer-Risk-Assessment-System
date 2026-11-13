@@ -1,65 +1,102 @@
-# Python cache
+# ─── Secrets (never commit) ────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+secret_key.py
+*.key
+*.pem
+*.keystore
+*.jks
+keystore.properties
+*.p12
+*.pfx
+
+# ─── Patient / runtime data ────────────────────────────────────────────────
+# The desktop app stores its SQLite DB here at runtime. Never commit it.
+User_data/
+apps/desktop/User_data/
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+exports/
+data/private/
+private_data/
+
+# ─── Legacy / generated model artifacts ────────────────────────────────────
+# Pickle/joblib models execute arbitrary code on load. They are build
+# artifacts now; the shippable model is shared/model/model.onnx.
+*.pkl
+*.joblib
+*.h5
+*.pt
+*.pth
+
+# ─── Python ────────────────────────────────────────────────────────────────
 __pycache__/
 *.py[cod]
 *$py.class
-
-# Virtual environment
+.venv/
 venv/
 env/
-.venv/
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+.eggs/
 
-# Environment variables
-.env
-*.env
+# ─── Rust ──────────────────────────────────────────────────────────────────
+target/
+**/target/
+core/rust/target/
 
-# PyInstaller
+# ─── Android / Gradle ──────────────────────────────────────────────────────
+.gradle/
+**/build/
+local.properties
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+apps/android/app/release/
+apps/android/app/debug/
+apps/android/.kotlin/
+apps/android/.idea/
+apps/android/app/src/main/jniLibs/*/*.so
+apps/android/keystore.properties
+
+# ─── PyInstaller / installers ──────────────────────────────────────────────
 build/
 dist/
-*.spec
-
-# Executables
+Output/
 *.exe
+*.msi
 *.dll
-*.so
 *.dylib
+*.so
+!core/rust/**/*.so
 
-# Logs
+# ─── Logs / temp / OS ──────────────────────────────────────────────────────
 *.log
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db
 
-# IDE / Editor
+# ─── IDE ───────────────────────────────────────────────────────────────────
 .vscode/
 .idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
+*.iml
 
-# OS files
-.DS_Store
-Thumbs.db
-
-# Jupyter Notebook
-.ipynb_checkpoints/
-
-# Temporary files
-*.tmp
-*.bak
-
-# Package files
-*.egg-info/
-.eggs/
-
-# Large ML / data files (optional)
-*.h5
-*.pt
-*.pth
-*.pkl
-
-# Ignore internal PyInstaller dist dependencies
-dist/*/_internal/
-
-# Ignore build artifacts inside project
-build/UlcerRiskAI/
-
-# Keep assets (important files)
-!assets/
+# ─── Generated project tree (scripts/file_structure.py) ────────────────────
+project_structure.txt
