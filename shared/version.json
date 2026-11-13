@@ -1,0 +1,11 @@
+{
+  "version": "2.1.0",
+  "versionCode": 20100,
+  "releaseChannel": "research-prototype",
+  "modelVersion": "1.0.0",
+  "swbraSpecVersion": "1.0.0",
+  "preprocessingVersion": "1.0.0",
+  "buildDate": null,
+  "gitCommit": null,
+  "notes": "Single source of truth for desktop and Android. buildDate/gitCommit are injected by CI; null means not built by CI."
+}

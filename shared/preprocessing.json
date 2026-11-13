@@ -1,0 +1,181 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-13",
+  "provenance": {
+    "featureOrder": "apps/desktop/main.py:35-41 and src/data.pkl feature_names_in_",
+    "encodings": "apps/desktop/main.py:686-689 and ai/train_model.py:23-31",
+    "classificationThresholds": "apps/desktop/main.py:886",
+    "dataset": "apps/desktop/src/data.csv (300 rows, verified by pandas)"
+  },
+  "featureOrder": [
+    {
+      "name": "Age",
+      "sourceColumn": "Age",
+      "type": "number",
+      "unit": "years",
+      "encoding": "as-is",
+      "sanityBound": { "min": 0, "max": 120, "inclusive": true },
+      "provenance": "Label 'Age (years)' in main.py:660. The source has no range check; 0-120 is a physical sanity bound, not a clinical range."
+    },
+    {
+      "name": "Gender",
+      "sourceColumn": "Gender",
+      "type": "categorical",
+      "unit": null,
+      "encoding": { "Male": 1, "Female": 0 },
+      "sanityBound": null,
+      "provenance": "main.py:649-657, main.py:686-689."
+    },
+    {
+      "name": "Spicy_Food",
+      "sourceColumn": "Spicy_Food",
+      "type": "boolean",
+      "unit": null,
+      "encoding": { "Yes": 1, "No": 0 },
+      "sanityBound": null,
+      "provenance": "main.py:649-657, train_model.py:25-31."
+    },
+    {
+      "name": "Tobacco",
+      "sourceColumn": "Tobacco",
+      "type": "boolean",
+      "unit": null,
+      "encoding": { "Yes": 1, "No": 0 },
+      "sanityBound": null,
+      "provenance": "main.py:649-657, train_model.py:25-31."
+    },
+    {
+      "name": "Alcohol",
+      "sourceColumn": "Alcohol",
+      "type": "boolean",
+      "unit": null,
+      "encoding": { "Yes": 1, "No": 0 },
+      "sanityBound": null,
+      "provenance": "main.py:649-657, train_model.py:25-31."
+    },
+    {
+      "name": "Sleep_Hours",
+      "sourceColumn": "Sleep_Hours",
+      "type": "number",
+      "unit": "hours/day",
+      "encoding": "as-is",
+      "sanityBound": { "min": 0, "max": 24, "inclusive": true },
+      "provenance": "Label 'Avg. Sleep (hrs/day)' in main.py:665. 0-24 is a physical sanity bound, not a clinical range."
+    },
+    {
+      "name": "Stress",
+      "sourceColumn": "Stress",
+      "type": "number",
+      "unit": "1-10 scale",
+      "encoding": "as-is",
+      "sanityBound": { "min": 1, "max": 10, "inclusive": true },
+      "provenance": "Label 'Stress Level (1-10)' in main.py:666; the bound is verified from the UI label."
+    },
+    {
+      "name": "Skip_Meals",
+      "sourceColumn": "Skip_Meals",
+      "type": "boolean",
+      "unit": null,
+      "encoding": { "Yes": 1, "No": 0 },
+      "sanityBound": null,
+      "provenance": "main.py:649-657, train_model.py:25-31."
+    },
+    {
+      "name": "Soft_Drinks",
+      "sourceColumn": "Soft_Drinks",
+      "type": "boolean",
+      "unit": null,
+      "encoding": { "Yes": 1, "No": 0 },
+      "sanityBound": null,
+      "provenance": "main.py:649-657, train_model.py:25-31."
+    },
+    {
+      "name": "Empty_Stomach_Pain",
+      "sourceColumn": "Empty_Stomach_Pain",
+      "type": "boolean",
+      "unit": null,
+      "encoding": { "Yes": 1, "No": 0 },
+      "sanityBound": null,
+      "provenance": "main.py:649-657, train_model.py:25-31."
+    },
+    {
+      "name": "Day1_pH_Before",
+      "sourceColumn": "Day1_pH_Before",
+      "type": "number",
+      "unit": "pH (unitless)",
+      "encoding": "as-is",
+      "sanityBound": { "min": 0, "max": 14, "inclusive": true },
+      "provenance": "Label 'Day 1 pH - Before Meal' in main.py:670. 0-14 is the standard pH scale bound, not a clinical threshold."
+    },
+    {
+      "name": "Day1_pH_After",
+      "sourceColumn": "Day1_pH_After",
+      "type": "number",
+      "unit": "pH (unitless)",
+      "encoding": "as-is",
+      "sanityBound": { "min": 0, "max": 14, "inclusive": true },
+      "provenance": "Label 'Day 1 pH - After Meal' in main.py:671. 0-14 is the standard pH scale bound, not a clinical threshold."
+    },
+    {
+      "name": "Day2_pH_Before",
+      "sourceColumn": "Day2_pH_Before",
+      "type": "number",
+      "unit": "pH (unitless)",
+      "encoding": "as-is",
+      "sanityBound": { "min": 0, "max": 14, "inclusive": true },
+      "provenance": "Label 'Day 2 pH - Before Meal' in main.py:672. 0-14 is the standard pH scale bound, not a clinical threshold."
+    },
+    {
+      "name": "Day2_pH_After",
+      "sourceColumn": "Day2_pH_After",
+      "type": "number",
+      "unit": "pH (unitless)",
+      "encoding": "as-is",
+      "sanityBound": { "min": 0, "max": 14, "inclusive": true },
+      "provenance": "Label 'Day 2 pH - After Meal' in main.py:673. 0-14 is the standard pH scale bound, not a clinical threshold."
+    }
+  ],
+  "missingValuePolicy": {
+    "mode": "reject",
+    "source": "main.py:686-690 uses float(widget.text()); empty or non-numeric text raises and the UI shows an error. No imputation exists.",
+    "details": "Every field is required. The core returns a typed validation error naming the missing/invalid field."
+  },
+  "datasetEnvelope": {
+    "source": "apps/desktop/src/data.csv",
+    "purpose": "Reference only. Values outside this envelope are accepted with a warning; the model may extrapolate and predictions outside it are less trustworthy.",
+    "bounds": {
+      "Age": { "min": 18, "max": 64 },
+      "Sleep_Hours": { "min": 4, "max": 9 },
+      "Stress": { "min": 1, "max": 9 },
+      "Day1_pH_Before": { "min": 5.0, "max": 7.48 },
+      "Day1_pH_After": { "min": 4.5, "max": 6.99 },
+      "Day2_pH_Before": { "min": 5.01, "max": 7.5 },
+      "Day2_pH_After": { "min": 4.5, "max": 7.0 }
+    }
+  },
+  "model": {
+    "file": "shared/model/model.onnx",
+    "format": "ONNX",
+    "inputName": "input",
+    "inputShape": [null, 14],
+    "inputType": "tensor(float)",
+    "outputs": [
+      { "name": "label", "type": "int64", "shape": [null] },
+      { "name": "probabilities", "type": "float32", "shape": [null, 2] }
+    ],
+    "classOrder": [0, 1],
+    "positiveClassIndex": 1,
+    "positiveClassMeaning": "Ulcer (dataset target 1)",
+    "probabilityExtraction": "probabilities[:, 1]"
+  },
+  "classification": {
+    "source": "apps/desktop/main.py:886",
+    "rules": [
+      { "category": "HIGH", "operator": ">", "threshold": 0.7 },
+      { "category": "MEDIUM", "operator": ">", "threshold": 0.3 },
+      { "category": "LOW", "operator": "<=", "threshold": 0.3 }
+    ],
+    "boundaryNotes": "Operators are strict. A probability exactly equal to 0.7 is MEDIUM; exactly equal to 0.3 is LOW.",
+    "validation": "UNKNOWN. These are application decision thresholds copied from the source code, not clinically validated cut-offs. See docs/OPEN_QUESTIONS.md."
+  }
+}

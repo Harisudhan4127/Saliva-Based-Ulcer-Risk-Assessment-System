@@ -1,0 +1,1262 @@
+{
+  "evaluationVectors": [
+    {
+      "expected": {
+        "features": [
+          40.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          7.0,
+          5.0,
+          0.0,
+          0.0,
+          0.0,
+          6.5,
+          6.0,
+          6.6,
+          5.9
+        ],
+        "mlCategory": "LOW",
+        "swbraCategory": null,
+        "swbraScore": null,
+        "swbraStatus": "UNAVAILABLE",
+        "versions": {
+          "appVersion": "2.1.0",
+          "modelVersion": "1.0.0",
+          "preprocessingVersion": "1.0.0",
+          "swbraSpecVersion": "1.0.0"
+        },
+        "warningCodes": []
+      },
+      "name": "eval-0",
+      "payload": {
+        "Age": 40,
+        "Alcohol": "No",
+        "Day1_pH_After": 6.0,
+        "Day1_pH_Before": 6.5,
+        "Day2_pH_After": 5.9,
+        "Day2_pH_Before": 6.6,
+        "Empty_Stomach_Pain": "No",
+        "Gender": "Male",
+        "Skip_Meals": "No",
+        "Sleep_Hours": 7,
+        "Soft_Drinks": "No",
+        "Spicy_Food": "No",
+        "Stress": 5,
+        "Tobacco": "No"
+      },
+      "probability": 0.0
+    },
+    {
+      "expected": {
+        "features": [
+          40.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          7.0,
+          5.0,
+          0.0,
+          0.0,
+          0.0,
+          6.5,
+          6.0,
+          6.6,
+          5.9
+        ],
+        "mlCategory": "LOW",
+        "swbraCategory": null,
+        "swbraScore": null,
+        "swbraStatus": "UNAVAILABLE",
+        "versions": {
+          "appVersion": "2.1.0",
+          "modelVersion": "1.0.0",
+          "preprocessingVersion": "1.0.0",
+          "swbraSpecVersion": "1.0.0"
+        },
+        "warningCodes": []
+      },
+      "name": "eval-1",
+      "payload": {
+        "Age": 40,
+        "Alcohol": "No",
+        "Day1_pH_After": 6.0,
+        "Day1_pH_Before": 6.5,
+        "Day2_pH_After": 5.9,
+        "Day2_pH_Before": 6.6,
+        "Empty_Stomach_Pain": "No",
+        "Gender": "Male",
+        "Skip_Meals": "No",
+        "Sleep_Hours": 7,
+        "Soft_Drinks": "No",
+        "Spicy_Food": "No",
+        "Stress": 5,
+        "Tobacco": "No"
+      },
+      "probability": 0.3
+    },
+    {
+      "expected": {
+        "features": [
+          40.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          7.0,
+          5.0,
+          0.0,
+          0.0,
+          0.0,
+          6.5,
+          6.0,
+          6.6,
+          5.9
+        ],
+        "mlCategory": "MEDIUM",
+        "swbraCategory": null,
+        "swbraScore": null,
+        "swbraStatus": "UNAVAILABLE",
+        "versions": {
+          "appVersion": "2.1.0",
+          "modelVersion": "1.0.0",
+          "preprocessingVersion": "1.0.0",
+          "swbraSpecVersion": "1.0.0"
+        },
+        "warningCodes": []
+      },
+      "name": "eval-2",
+      "payload": {
+        "Age": 40,
+        "Alcohol": "No",
+        "Day1_pH_After": 6.0,
+        "Day1_pH_Before": 6.5,
+        "Day2_pH_After": 5.9,
+        "Day2_pH_Before": 6.6,
+        "Empty_Stomach_Pain": "No",
+        "Gender": "Male",
+        "Skip_Meals": "No",
+        "Sleep_Hours": 7,
+        "Soft_Drinks": "No",
+        "Spicy_Food": "No",
+        "Stress": 5,
+        "Tobacco": "No"
+      },
+      "probability": 0.30000000000000004
+    },
+    {
+      "expected": {
+        "features": [
+          40.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          7.0,
+          5.0,
+          0.0,
+          0.0,
+          0.0,
+          6.5,
+          6.0,
+          6.6,
+          5.9
+        ],
+        "mlCategory": "MEDIUM",
+        "swbraCategory": null,
+        "swbraScore": null,
+        "swbraStatus": "UNAVAILABLE",
+        "versions": {
+          "appVersion": "2.1.0",
+          "modelVersion": "1.0.0",
+          "preprocessingVersion": "1.0.0",
+          "swbraSpecVersion": "1.0.0"
+        },
+        "warningCodes": []
+      },
+      "name": "eval-3",
+      "payload": {
+        "Age": 40,
+        "Alcohol": "No",
+        "Day1_pH_After": 6.0,
+        "Day1_pH_Before": 6.5,
+        "Day2_pH_After": 5.9,
+        "Day2_pH_Before": 6.6,
+        "Empty_Stomach_Pain": "No",
+        "Gender": "Male",
+        "Skip_Meals": "No",
+        "Sleep_Hours": 7,
+        "Soft_Drinks": "No",
+        "Spicy_Food": "No",
+        "Stress": 5,
+        "Tobacco": "No"
+      },
+      "probability": 0.7
+    },
+    {
+      "expected": {
+        "features": [
+          40.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          7.0,
+          5.0,
+          0.0,
+          0.0,
+          0.0,
+          6.5,
+          6.0,
+          6.6,
+          5.9
+        ],
+        "mlCategory": "HIGH",
+        "swbraCategory": null,
+        "swbraScore": null,
+        "swbraStatus": "UNAVAILABLE",
+        "versions": {
+          "appVersion": "2.1.0",
+          "modelVersion": "1.0.0",
+          "preprocessingVersion": "1.0.0",
+          "swbraSpecVersion": "1.0.0"
+        },
+        "warningCodes": []
+      },
+      "name": "eval-4",
+      "payload": {
+        "Age": 40,
+        "Alcohol": "No",
+        "Day1_pH_After": 6.0,
+        "Day1_pH_Before": 6.5,
+        "Day2_pH_After": 5.9,
+        "Day2_pH_Before": 6.6,
+        "Empty_Stomach_Pain": "No",
+        "Gender": "Male",
+        "Skip_Meals": "No",
+        "Sleep_Hours": 7,
+        "Soft_Drinks": "No",
+        "Spicy_Food": "No",
+        "Stress": 5,
+        "Tobacco": "No"
+      },
+      "probability": 0.7000000000000001
+    },
+    {
+      "expected": {
+        "features": [
+          64.0,
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          4.0,
+          10.0,
+          1.0,
+          1.0,
+          1.0,
+          7.5,
+          4.5,
+          7.5,
+          4.5
+        ],
+        "mlCategory": "HIGH",
+        "swbraCategory": null,
+        "swbraScore": null,
+        "swbraStatus": "UNAVAILABLE",
+        "versions": {
+          "appVersion": "2.1.0",
+          "modelVersion": "1.0.0",
+          "preprocessingVersion": "1.0.0",
+          "swbraSpecVersion": "1.0.0"
+        },
+        "warningCodes": [
+          "OUTSIDE_DATASET_ENVELOPE",
+          "OUTSIDE_DATASET_ENVELOPE"
+        ]
+      },
+      "name": "eval-5",
+      "payload": {
+        "Age": 64,
+        "Alcohol": "Yes",
+        "Day1_pH_After": 4.5,
+        "Day1_pH_Before": 7.5,
+        "Day2_pH_After": 4.5,
+        "Day2_pH_Before": 7.5,
+        "Empty_Stomach_Pain": "Yes",
+        "Gender": "Female",
+        "Skip_Meals": "Yes",
+        "Sleep_Hours": 4,
+        "Soft_Drinks": "Yes",
+        "Spicy_Food": "Yes",
+        "Stress": 10,
+        "Tobacco": "Yes"
+      },
+      "probability": 0.87
+    },
+    {
+      "expected": {
+        "features": [
+          18.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          9.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          5.0,
+          6.99,
+          5.01,
+          7.0
+        ],
+        "mlCategory": "LOW",
+        "swbraCategory": null,
+        "swbraScore": null,
+        "swbraStatus": "UNAVAILABLE",
+        "versions": {
+          "appVersion": "2.1.0",
+          "modelVersion": "1.0.0",
+          "preprocessingVersion": "1.0.0",
+          "swbraSpecVersion": "1.0.0"
+        },
+        "warningCodes": []
+      },
+      "name": "eval-6",
+      "payload": {
+        "Age": 18,
+        "Alcohol": "No",
+        "Day1_pH_After": 6.99,
+        "Day1_pH_Before": 5.0,
+        "Day2_pH_After": 7.0,
+        "Day2_pH_Before": 5.01,
+        "Empty_Stomach_Pain": "No",
+        "Gender": "Female",
+        "Skip_Meals": "No",
+        "Sleep_Hours": 9,
+        "Soft_Drinks": "No",
+        "Spicy_Food": "No",
+        "Stress": 1,
+        "Tobacco": "No"
+      },
+      "probability": 0.04
+    },
+    {
+      "expected": {
+        "features": [
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "mlCategory": "MEDIUM",
+        "swbraCategory": null,
+        "swbraScore": null,
+        "swbraStatus": "UNAVAILABLE",
+        "versions": {
+          "appVersion": "2.1.0",
+          "modelVersion": "1.0.0",
+          "preprocessingVersion": "1.0.0",
+          "swbraSpecVersion": "1.0.0"
+        },
+        "warningCodes": [
+          "OUTSIDE_DATASET_ENVELOPE",
+          "OUTSIDE_DATASET_ENVELOPE",
+          "OUTSIDE_DATASET_ENVELOPE",
+          "OUTSIDE_DATASET_ENVELOPE",
+          "OUTSIDE_DATASET_ENVELOPE",
+          "OUTSIDE_DATASET_ENVELOPE"
+        ]
+      },
+      "name": "eval-7",
+      "payload": {
+        "Age": 0,
+        "Alcohol": "No",
+        "Day1_pH_After": 0.0,
+        "Day1_pH_Before": 0.0,
+        "Day2_pH_After": 0.0,
+        "Day2_pH_Before": 0.0,
+        "Empty_Stomach_Pain": "No",
+        "Gender": "Male",
+        "Skip_Meals": "No",
+        "Sleep_Hours": 0,
+        "Soft_Drinks": "No",
+        "Spicy_Food": "No",
+        "Stress": 1,
+        "Tobacco": "No"
+      },
+      "probability": 0.5
+    }
+  ],
+  "featureOrder": [
+    "Age",
+    "Gender",
+    "Spicy_Food",
+    "Tobacco",
+    "Alcohol",
+    "Sleep_Hours",
+    "Stress",
+    "Skip_Meals",
+    "Soft_Drinks",
+    "Empty_Stomach_Pain",
+    "Day1_pH_Before",
+    "Day1_pH_After",
+    "Day2_pH_Before",
+    "Day2_pH_After"
+  ],
+  "generatedAt": "2026-11-13",
+  "generatedBy": "ai/generate_golden_vectors.py",
+  "mlThresholdVectors": [
+    {
+      "expectedCategory": "LOW",
+      "probability": 0.0
+    },
+    {
+      "expectedCategory": "LOW",
+      "probability": 0.1
+    },
+    {
+      "expectedCategory": "LOW",
+      "probability": 0.3
+    },
+    {
+      "expectedCategory": "MEDIUM",
+      "probability": 0.30000000000000004
+    },
+    {
+      "expectedCategory": "MEDIUM",
+      "probability": 0.5
+    },
+    {
+      "expectedCategory": "MEDIUM",
+      "probability": 0.7
+    },
+    {
+      "expectedCategory": "HIGH",
+      "probability": 0.7000000000000001
+    },
+    {
+      "expectedCategory": "HIGH",
+      "probability": 0.9
+    },
+    {
+      "expectedCategory": "HIGH",
+      "probability": 1.0
+    }
+  ],
+  "schemaVersion": "1.0.0",
+  "swbraBandBoundaryVectors": [
+    {
+      "expectedCategory": "LOW",
+      "score": 0
+    },
+    {
+      "expectedCategory": "LOW",
+      "score": 15
+    },
+    {
+      "expectedCategory": "LOW",
+      "score": 20
+    },
+    {
+      "expectedCategory": "LOW",
+      "score": 25
+    },
+    {
+      "expectedCategory": "LOW",
+      "score": 30
+    },
+    {
+      "expectedCategory": "LOW",
+      "score": 39
+    },
+    {
+      "expectedCategory": "MODERATE",
+      "score": 40
+    },
+    {
+      "expectedCategory": "MODERATE",
+      "score": 55
+    },
+    {
+      "expectedCategory": "MODERATE",
+      "score": 69
+    },
+    {
+      "expectedCategory": "HIGH",
+      "score": 70
+    },
+    {
+      "expectedCategory": "HIGH",
+      "score": 75
+    },
+    {
+      "expectedCategory": "HIGH",
+      "score": 90
+    }
+  ],
+  "swbraFlagVectors": [
+    {
+      "expectedCategory": "LOW",
+      "expectedScore": 0,
+      "flags": {
+        "crp_high": false,
+        "iga_low": false,
+        "il6_high": false,
+        "ph_abnormal": false
+      }
+    },
+    {
+      "expectedCategory": "LOW",
+      "expectedScore": 15,
+      "flags": {
+        "crp_high": false,
+        "iga_low": false,
+        "il6_high": false,
+        "ph_abnormal": true
+      }
+    },
+    {
+      "expectedCategory": "LOW",
+      "expectedScore": 20,
+      "flags": {
+        "crp_high": false,
+        "iga_low": true,
+        "il6_high": false,
+        "ph_abnormal": false
+      }
+    },
+    {
+      "expectedCategory": "LOW",
+      "expectedScore": 35,
+      "flags": {
+        "crp_high": false,
+        "iga_low": true,
+        "il6_high": false,
+        "ph_abnormal": true
+      }
+    },
+    {
+      "expectedCategory": "LOW",
+      "expectedScore": 25,
+      "flags": {
+        "crp_high": true,
+        "iga_low": false,
+        "il6_high": false,
+        "ph_abnormal": false
+      }
+    },
+    {
+      "expectedCategory": "MODERATE",
+      "expectedScore": 40,
+      "flags": {
+        "crp_high": true,
+        "iga_low": false,
+        "il6_high": false,
+        "ph_abnormal": true
+      }
+    },
+    {
+      "expectedCategory": "MODERATE",
+      "expectedScore": 45,
+      "flags": {
+        "crp_high": true,
+        "iga_low": true,
+        "il6_high": false,
+        "ph_abnormal": false
+      }
+    },
+    {
+      "expectedCategory": "MODERATE",
+      "expectedScore": 60,
+      "flags": {
+        "crp_high": true,
+        "iga_low": true,
+        "il6_high": false,
+        "ph_abnormal": true
+      }
+    },
+    {
+      "expectedCategory": "LOW",
+      "expectedScore": 30,
+      "flags": {
+        "crp_high": false,
+        "iga_low": false,
+        "il6_high": true,
+        "ph_abnormal": false
+      }
+    },
+    {
+      "expectedCategory": "MODERATE",
+      "expectedScore": 45,
+      "flags": {
+        "crp_high": false,
+        "iga_low": false,
+        "il6_high": true,
+        "ph_abnormal": true
+      }
+    },
+    {
+      "expectedCategory": "MODERATE",
+      "expectedScore": 50,
+      "flags": {
+        "crp_high": false,
+        "iga_low": true,
+        "il6_high": true,
+        "ph_abnormal": false
+      }
+    },
+    {
+      "expectedCategory": "MODERATE",
+      "expectedScore": 65,
+      "flags": {
+        "crp_high": false,
+        "iga_low": true,
+        "il6_high": true,
+        "ph_abnormal": true
+      }
+    },
+    {
+      "expectedCategory": "MODERATE",
+      "expectedScore": 55,
+      "flags": {
+        "crp_high": true,
+        "iga_low": false,
+        "il6_high": true,
+        "ph_abnormal": false
+      }
+    },
+    {
+      "expectedCategory": "HIGH",
+      "expectedScore": 70,
+      "flags": {
+        "crp_high": true,
+        "iga_low": false,
+        "il6_high": true,
+        "ph_abnormal": true
+      }
+    },
+    {
+      "expectedCategory": "HIGH",
+      "expectedScore": 75,
+      "flags": {
+        "crp_high": true,
+        "iga_low": true,
+        "il6_high": true,
+        "ph_abnormal": false
+      }
+    },
+    {
+      "expectedCategory": "HIGH",
+      "expectedScore": 90,
+      "flags": {
+        "crp_high": true,
+        "iga_low": true,
+        "il6_high": true,
+        "ph_abnormal": true
+      }
+    }
+  ],
+  "validationVectors": [
+    {
+      "expected": {
+        "errorCodes": [
+          "MISSING_FIELD"
+        ],
+        "errorFields": [
+          "Stress"
+        ],
+        "ok": false,
+        "warningCodes": []
+      },
+      "name": "missing-stress",
+      "payload": {
+        "Age": 40,
+        "Alcohol": "No",
+        "Day1_pH_After": 6.0,
+        "Day1_pH_Before": 6.5,
+        "Day2_pH_After": 5.9,
+        "Day2_pH_Before": 6.6,
+        "Empty_Stomach_Pain": "No",
+        "Gender": "Male",
+        "Skip_Meals": "No",
+        "Sleep_Hours": 7,
+        "Soft_Drinks": "No",
+        "Spicy_Food": "No",
+        "Tobacco": "No"
+      }
+    },
+    {
+      "expected": {
+        "errorCodes": [
+          "INVALID_VALUE"
+        ],
+        "errorFields": [
+          "Gender"
+        ],
+        "ok": false,
+        "warningCodes": []
+      },
+      "name": "unknown-gender",
+      "payload": {
+        "Age": 40,
+        "Alcohol": "No",
+        "Day1_pH_After": 6.0,
+        "Day1_pH_Before": 6.5,
+        "Day2_pH_After": 5.9,
+        "Day2_pH_Before": 6.6,
+        "Empty_Stomach_Pain": "No",
+        "Gender": "Other",
+        "Skip_Meals": "No",
+        "Sleep_Hours": 7,
+        "Soft_Drinks": "No",
+        "Spicy_Food": "No",
+        "Stress": 5,
+        "Tobacco": "No"
+      }
+    },
+    {
+      "expected": {
+        "errorCodes": [
+          "OUT_OF_RANGE"
+        ],
+        "errorFields": [
+          "Age"
+        ],
+        "ok": false,
+        "warningCodes": []
+      },
+      "name": "age-negative",
+      "payload": {
+        "Age": -1,
+        "Alcohol": "No",
+        "Day1_pH_After": 6.0,
+        "Day1_pH_Before": 6.5,
+        "Day2_pH_After": 5.9,
+        "Day2_pH_Before": 6.6,
+        "Empty_Stomach_Pain": "No",
+        "Gender": "Male",
+        "Skip_Meals": "No",
+        "Sleep_Hours": 7,
+        "Soft_Drinks": "No",
+        "Spicy_Food": "No",
+        "Stress": 5,
+        "Tobacco": "No"
+      }
+    },
+    {
+      "expected": {
+        "errorCodes": [
+          "OUT_OF_RANGE"
+        ],
+        "errorFields": [
+          "Age"
+        ],
+        "ok": false,
+        "warningCodes": []
+      },
+      "name": "age-too-high",
+      "payload": {
+        "Age": 121,
+        "Alcohol": "No",
+        "Day1_pH_After": 6.0,
+        "Day1_pH_Before": 6.5,
+        "Day2_pH_After": 5.9,
+        "Day2_pH_Before": 6.6,
+        "Empty_Stomach_Pain": "No",
+        "Gender": "Male",
+        "Skip_Meals": "No",
+        "Sleep_Hours": 7,
+        "Soft_Drinks": "No",
+        "Spicy_Food": "No",
+        "Stress": 5,
+        "Tobacco": "No"
+      }
+    },
+    {
+      "expected": {
+        "errorCodes": [
+          "OUT_OF_RANGE"
+        ],
+        "errorFields": [
+          "Sleep_Hours"
+        ],
+        "ok": false,
+        "warningCodes": []
+      },
+      "name": "sleep-too-high",
+      "payload": {
+        "Age": 40,
+        "Alcohol": "No",
+        "Day1_pH_After": 6.0,
+        "Day1_pH_Before": 6.5,
+        "Day2_pH_After": 5.9,
+        "Day2_pH_Before": 6.6,
+        "Empty_Stomach_Pain": "No",
+        "Gender": "Male",
+        "Skip_Meals": "No",
+        "Sleep_Hours": 25,
+        "Soft_Drinks": "No",
+        "Spicy_Food": "No",
+        "Stress": 5,
+        "Tobacco": "No"
+      }
+    },
+    {
+      "expected": {
+        "errorCodes": [
+          "OUT_OF_RANGE"
+        ],
+        "errorFields": [
+          "Sleep_Hours"
+        ],
+        "ok": false,
+        "warningCodes": []
+      },
+      "name": "sleep-negative",
+      "payload": {
+        "Age": 40,
+        "Alcohol": "No",
+        "Day1_pH_After": 6.0,
+        "Day1_pH_Before": 6.5,
+        "Day2_pH_After": 5.9,
+        "Day2_pH_Before": 6.6,
+        "Empty_Stomach_Pain": "No",
+        "Gender": "Male",
+        "Skip_Meals": "No",
+        "Sleep_Hours": -1,
+        "Soft_Drinks": "No",
+        "Spicy_Food": "No",
+        "Stress": 5,
+        "Tobacco": "No"
+      }
+    },
+    {
+      "expected": {
+        "errorCodes": [
+          "OUT_OF_RANGE"
+        ],
+        "errorFields": [
+          "Stress"
+        ],
+        "ok": false,
+        "warningCodes": []
+      },
+      "name": "stress-zero",
+      "payload": {
+        "Age": 40,
+        "Alcohol": "No",
+        "Day1_pH_After": 6.0,
+        "Day1_pH_Before": 6.5,
+        "Day2_pH_After": 5.9,
+        "Day2_pH_Before": 6.6,
+        "Empty_Stomach_Pain": "No",
+        "Gender": "Male",
+        "Skip_Meals": "No",
+        "Sleep_Hours": 7,
+        "Soft_Drinks": "No",
+        "Spicy_Food": "No",
+        "Stress": 0,
+        "Tobacco": "No"
+      }
+    },
+    {
+      "expected": {
+        "errorCodes": [
+          "OUT_OF_RANGE"
+        ],
+        "errorFields": [
+          "Stress"
+        ],
+        "ok": false,
+        "warningCodes": []
+      },
+      "name": "stress-eleven",
+      "payload": {
+        "Age": 40,
+        "Alcohol": "No",
+        "Day1_pH_After": 6.0,
+        "Day1_pH_Before": 6.5,
+        "Day2_pH_After": 5.9,
+        "Day2_pH_Before": 6.6,
+        "Empty_Stomach_Pain": "No",
+        "Gender": "Male",
+        "Skip_Meals": "No",
+        "Sleep_Hours": 7,
+        "Soft_Drinks": "No",
+        "Spicy_Food": "No",
+        "Stress": 11,
+        "Tobacco": "No"
+      }
+    },
+    {
+      "expected": {
+        "errorCodes": [
+          "OUT_OF_RANGE"
+        ],
+        "errorFields": [
+          "Day1_pH_Before"
+        ],
+        "ok": false,
+        "warningCodes": []
+      },
+      "name": "ph-negative",
+      "payload": {
+        "Age": 40,
+        "Alcohol": "No",
+        "Day1_pH_After": 6.0,
+        "Day1_pH_Before": -0.1,
+        "Day2_pH_After": 5.9,
+        "Day2_pH_Before": 6.6,
+        "Empty_Stomach_Pain": "No",
+        "Gender": "Male",
+        "Skip_Meals": "No",
+        "Sleep_Hours": 7,
+        "Soft_Drinks": "No",
+        "Spicy_Food": "No",
+        "Stress": 5,
+        "Tobacco": "No"
+      }
+    },
+    {
+      "expected": {
+        "errorCodes": [
+          "OUT_OF_RANGE"
+        ],
+        "errorFields": [
+          "Day2_pH_After"
+        ],
+        "ok": false,
+        "warningCodes": []
+      },
+      "name": "ph-too-high",
+      "payload": {
+        "Age": 40,
+        "Alcohol": "No",
+        "Day1_pH_After": 6.0,
+        "Day1_pH_Before": 6.5,
+        "Day2_pH_After": 14.1,
+        "Day2_pH_Before": 6.6,
+        "Empty_Stomach_Pain": "No",
+        "Gender": "Male",
+        "Skip_Meals": "No",
+        "Sleep_Hours": 7,
+        "Soft_Drinks": "No",
+        "Spicy_Food": "No",
+        "Stress": 5,
+        "Tobacco": "No"
+      }
+    },
+    {
+      "expected": {
+        "errorCodes": [
+          "INVALID_VALUE"
+        ],
+        "errorFields": [
+          "Tobacco"
+        ],
+        "ok": false,
+        "warningCodes": []
+      },
+      "name": "yesno-invalid",
+      "payload": {
+        "Age": 40,
+        "Alcohol": "No",
+        "Day1_pH_After": 6.0,
+        "Day1_pH_Before": 6.5,
+        "Day2_pH_After": 5.9,
+        "Day2_pH_Before": 6.6,
+        "Empty_Stomach_Pain": "No",
+        "Gender": "Male",
+        "Skip_Meals": "No",
+        "Sleep_Hours": 7,
+        "Soft_Drinks": "No",
+        "Spicy_Food": "No",
+        "Stress": 5,
+        "Tobacco": "Maybe"
+      }
+    },
+    {
+      "expected": {
+        "errorCodes": [
+          "INVALID_TYPE"
+        ],
+        "errorFields": [
+          "Age"
+        ],
+        "ok": false,
+        "warningCodes": []
+      },
+      "name": "age-string",
+      "payload": {
+        "Age": "40",
+        "Alcohol": "No",
+        "Day1_pH_After": 6.0,
+        "Day1_pH_Before": 6.5,
+        "Day2_pH_After": 5.9,
+        "Day2_pH_Before": 6.6,
+        "Empty_Stomach_Pain": "No",
+        "Gender": "Male",
+        "Skip_Meals": "No",
+        "Sleep_Hours": 7,
+        "Soft_Drinks": "No",
+        "Spicy_Food": "No",
+        "Stress": 5,
+        "Tobacco": "No"
+      }
+    },
+    {
+      "expected": {
+        "errorCodes": [
+          "INVALID_TYPE"
+        ],
+        "errorFields": [
+          "Stress"
+        ],
+        "ok": false,
+        "warningCodes": []
+      },
+      "name": "nan-string",
+      "payload": {
+        "Age": 40,
+        "Alcohol": "No",
+        "Day1_pH_After": 6.0,
+        "Day1_pH_Before": 6.5,
+        "Day2_pH_After": 5.9,
+        "Day2_pH_Before": 6.6,
+        "Empty_Stomach_Pain": "No",
+        "Gender": "Male",
+        "Skip_Meals": "No",
+        "Sleep_Hours": 7,
+        "Soft_Drinks": "No",
+        "Spicy_Food": "No",
+        "Stress": "NaN",
+        "Tobacco": "No"
+      }
+    },
+    {
+      "expected": {
+        "errorCodes": [
+          "INVALID_TYPE"
+        ],
+        "errorFields": [
+          "Stress"
+        ],
+        "ok": false,
+        "warningCodes": []
+      },
+      "name": "inf-string",
+      "payload": {
+        "Age": 40,
+        "Alcohol": "No",
+        "Day1_pH_After": 6.0,
+        "Day1_pH_Before": 6.5,
+        "Day2_pH_After": 5.9,
+        "Day2_pH_Before": 6.6,
+        "Empty_Stomach_Pain": "No",
+        "Gender": "Male",
+        "Skip_Meals": "No",
+        "Sleep_Hours": 7,
+        "Soft_Drinks": "No",
+        "Spicy_Food": "No",
+        "Stress": "Infinity",
+        "Tobacco": "No"
+      }
+    },
+    {
+      "expected": {
+        "errorCodes": [],
+        "errorFields": [],
+        "features": [
+          40.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          7.0,
+          5.0,
+          0.0,
+          0.0,
+          0.0,
+          6.5,
+          6.0,
+          6.6,
+          5.9
+        ],
+        "ok": true,
+        "warningCodes": []
+      },
+      "name": "baseline",
+      "payload": {
+        "Age": 40,
+        "Alcohol": "No",
+        "Day1_pH_After": 6.0,
+        "Day1_pH_Before": 6.5,
+        "Day2_pH_After": 5.9,
+        "Day2_pH_Before": 6.6,
+        "Empty_Stomach_Pain": "No",
+        "Gender": "Male",
+        "Skip_Meals": "No",
+        "Sleep_Hours": 7,
+        "Soft_Drinks": "No",
+        "Spicy_Food": "No",
+        "Stress": 5,
+        "Tobacco": "No"
+      }
+    },
+    {
+      "expected": {
+        "errorCodes": [],
+        "errorFields": [],
+        "features": [
+          64.0,
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          4.0,
+          10.0,
+          1.0,
+          1.0,
+          1.0,
+          7.5,
+          4.5,
+          7.5,
+          4.5
+        ],
+        "ok": true,
+        "warningCodes": [
+          "OUTSIDE_DATASET_ENVELOPE",
+          "OUTSIDE_DATASET_ENVELOPE"
+        ]
+      },
+      "name": "high-input",
+      "payload": {
+        "Age": 64,
+        "Alcohol": "Yes",
+        "Day1_pH_After": 4.5,
+        "Day1_pH_Before": 7.5,
+        "Day2_pH_After": 4.5,
+        "Day2_pH_Before": 7.5,
+        "Empty_Stomach_Pain": "Yes",
+        "Gender": "Female",
+        "Skip_Meals": "Yes",
+        "Sleep_Hours": 4,
+        "Soft_Drinks": "Yes",
+        "Spicy_Food": "Yes",
+        "Stress": 10,
+        "Tobacco": "Yes"
+      }
+    },
+    {
+      "expected": {
+        "errorCodes": [],
+        "errorFields": [],
+        "features": [
+          18.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          9.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          5.0,
+          6.99,
+          5.01,
+          7.0
+        ],
+        "ok": true,
+        "warningCodes": []
+      },
+      "name": "low-input",
+      "payload": {
+        "Age": 18,
+        "Alcohol": "No",
+        "Day1_pH_After": 6.99,
+        "Day1_pH_Before": 5.0,
+        "Day2_pH_After": 7.0,
+        "Day2_pH_Before": 5.01,
+        "Empty_Stomach_Pain": "No",
+        "Gender": "Female",
+        "Skip_Meals": "No",
+        "Sleep_Hours": 9,
+        "Soft_Drinks": "No",
+        "Spicy_Food": "No",
+        "Stress": 1,
+        "Tobacco": "No"
+      }
+    },
+    {
+      "expected": {
+        "errorCodes": [],
+        "errorFields": [],
+        "features": [
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "ok": true,
+        "warningCodes": [
+          "OUTSIDE_DATASET_ENVELOPE",
+          "OUTSIDE_DATASET_ENVELOPE",
+          "OUTSIDE_DATASET_ENVELOPE",
+          "OUTSIDE_DATASET_ENVELOPE",
+          "OUTSIDE_DATASET_ENVELOPE",
+          "OUTSIDE_DATASET_ENVELOPE"
+        ]
+      },
+      "name": "sanity-edge",
+      "payload": {
+        "Age": 0,
+        "Alcohol": "No",
+        "Day1_pH_After": 0.0,
+        "Day1_pH_Before": 0.0,
+        "Day2_pH_After": 0.0,
+        "Day2_pH_Before": 0.0,
+        "Empty_Stomach_Pain": "No",
+        "Gender": "Male",
+        "Skip_Meals": "No",
+        "Sleep_Hours": 0,
+        "Soft_Drinks": "No",
+        "Spicy_Food": "No",
+        "Stress": 1,
+        "Tobacco": "No"
+      }
+    }
+  ],
+  "versions": {
+    "appVersion": "2.1.0",
+    "modelVersion": "1.0.0",
+    "preprocessingVersion": "1.0.0",
+    "swbraSpecVersion": "1.0.0"
+  }
+}

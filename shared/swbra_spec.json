@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "1.0.0",
+  "algorithm": "Saliva Weighted Biomarker Risk Algorithm (SWBRA)",
+  "status": "DOCUMENTED_ONLY_NOT_IMPLEMENTED_IN_SOURCE",
+  "provenance": {
+    "file": "README.md",
+    "lines": "54-77",
+    "verifiedAgainstCode": "NO. A search of every tracked Python file found no SWBRA function, no weights, and no IL-6/CRP/IgA/protein fields. The desktop model consumes 14 lifestyle/pH features only (main.py:35-41)."
+  },
+  "inputs": {
+    "IL6": {
+      "role": "high is a risk factor",
+      "points": 30,
+      "unit": "UNKNOWN",
+      "threshold": "UNKNOWN",
+      "operator": "UNKNOWN",
+      "provenance": "README.md:61"
+    },
+    "CRP": {
+      "role": "high is a risk factor",
+      "points": 25,
+      "unit": "UNKNOWN",
+      "threshold": "UNKNOWN",
+      "operator": "UNKNOWN",
+      "provenance": "README.md:62"
+    },
+    "IgA": {
+      "role": "low is a risk factor",
+      "points": 20,
+      "unit": "UNKNOWN",
+      "threshold": "UNKNOWN",
+      "operator": "UNKNOWN",
+      "provenance": "README.md:63"
+    },
+    "pH": {
+      "role": "abnormal is a risk factor",
+      "points": 15,
+      "unit": "per README, salivary pH; the desktop collects gastric pH readings labelled 'GASTRIC pH'",
+      "threshold": "UNKNOWN",
+      "operator": "UNKNOWN",
+      "provenance": "README.md:64; apps/desktop/main.py:246, 793-794"
+    },
+    "Protein": {
+      "role": "listed as an input in README.md:45",
+      "points": null,
+      "unit": "UNKNOWN",
+      "threshold": "UNKNOWN",
+      "operator": "UNKNOWN",
+      "note": "No documented weight. It must contribute 0 unless a validated source supplies one."
+    }
+  },
+  "maxScore": 90,
+  "scoreComposition": "Sum of triggered weights. The documented weights sum to 90; protein has no documented weight.",
+  "bands": [
+    { "min": 0, "max": 39, "category": "LOW", "operator": "inclusive" },
+    { "min": 40, "max": 69, "category": "MODERATE", "operator": "inclusive" },
+    { "min": 70, "max": 90, "category": "HIGH", "operator": "inclusive" }
+  ],
+  "boundaryOperators": "Inclusive integer bands per README.md:73-75. Score 39 is LOW, 40 is MODERATE, 69 is MODERATE, 70 is HIGH.",
+  "missingValueHandling": "UNKNOWN",
+  "units": "UNKNOWN",
+  "rawInputsCollectedByCurrentApp": [],
+  "implementationNotes": "The documented arithmetic is testable from boolean flags (see flagsApi). Scoring raw biomarker values is disabled because no validated threshold, operator, unit, or missing-value rule exists in the source. The Android and desktop result screens must show SWBRA as unavailable rather than inventing a score.",
+  "flagsApi": {
+    "purpose": "Test the documented weights and bands without inventing raw-value thresholds.",
+    "inputs": ["il6_high", "crp_high", "iga_low", "ph_abnormal"],
+    "inputType": "boolean",
+    "output": "score = 30*il6_high + 25*crp_high + 20*iga_low + 15*ph_abnormal; category from bands",
+    "note": "These flags are not exposed in the app UI because the app does not collect the underlying biomarkers."
+  },
+  "confidence": {
+    "weights": "VERIFIED against README text only; not implemented in code.",
+    "bands": "VERIFIED against README text only; not implemented in code.",
+    "thresholds": "UNKNOWN",
+    "units": "UNKNOWN",
+    "clinicalValidation": "UNKNOWN"
+  }
+}
