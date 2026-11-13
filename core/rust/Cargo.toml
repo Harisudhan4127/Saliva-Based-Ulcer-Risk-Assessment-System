@@ -1,0 +1,35 @@
+[package]
+name = "suras-core"
+version = "2.1.0"
+edition = "2021"
+rust-version = "1.75"
+description = "Shared validation, preprocessing, SWBRA and risk-classification core for SURAS"
+license = "LicenseRef-Academic-Research-Only"
+publish = false
+
+[lib]
+name = "suras_core"
+crate-type = ["cdylib", "staticlib", "lib"]
+
+[[bin]]
+name = "uniffi-bindgen"
+path = "src/bin/uniffi-bindgen.rs"
+
+[features]
+default = []
+python = ["dep:pyo3"]
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2"
+uniffi = { version = "0.32", features = ["cli"] }
+pyo3 = { version = "0.30", optional = true, features = ["extension-module"] }
+
+[dev-dependencies]
+proptest = "1"
+criterion = "0.8"
+
+[[bench]]
+name = "core_bench"
+harness = false

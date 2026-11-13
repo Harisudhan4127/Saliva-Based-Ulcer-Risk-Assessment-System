@@ -1,0 +1,15 @@
+[build-system]
+requires = ["maturin>=1.8,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "suras-core"
+version = "2.1.0"
+description = "SURAS shared core: validation, preprocessing, SWBRA and classification"
+requires-python = ">=3.10"
+license = { text = "LicenseRef-Academic-Research-Only" }
+
+[tool.maturin]
+features = ["python"]
+module-name = "suras_core"
+manifest-path = "Cargo.toml"
