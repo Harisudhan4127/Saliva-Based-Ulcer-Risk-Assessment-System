@@ -92,7 +92,13 @@ jobs:
         with:
           tool: cargo-ndk
       - name: Install Android SDK platform and NDK
-        run: sdkmanager "platforms;android-37" "ndk;27.0.12077973"
+        run: |
+          yes | "${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager" --licenses >/dev/null || true
+          "${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager" --install \
+            "platform-tools" \
+            "platforms;android-37" \
+            "build-tools;36.0.0" \
+            "ndk;27.0.12077973"
       - name: Build the shared native core for Android
         run: ANDROID_NDK_HOME="$ANDROID_SDK_ROOT/ndk/27.0.12077973" scripts/build_android_core.sh
       - name: Gradle cache
