@@ -1,0 +1,61 @@
+name: Bug report
+description: Report a reproducible problem in the SURAS desktop or Android app.
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a report. SURAS is a research
+        prototype and is **not clinically validated** — please do not include
+        real patient data in this issue.
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options:
+        - Android app
+        - Windows desktop app
+        - Linux desktop app
+        - macOS desktop app
+        - Shared Rust core / Python bindings
+        - Build / CI
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: App version
+      description: From Settings → About, or `shared/version.json`.
+      placeholder: "2.1.0"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behaviour
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / screenshots
+      description: Redact any personal or patient data before pasting.
+    validations:
+      required: false

@@ -1,0 +1,33 @@
+version: 2
+updates:
+  # GitHub Actions
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    labels: ["dependencies", "ci"]
+
+  # Rust core
+  - package-ecosystem: cargo
+    directory: /core/rust
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    labels: ["dependencies", "rust"]
+
+  # Android / Gradle
+  - package-ecosystem: gradle
+    directory: /apps/android
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    labels: ["dependencies", "android"]
+
+  # Python (desktop + AI)
+  - package-ecosystem: pip
+    directory: /apps/desktop
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    labels: ["dependencies", "python"]
