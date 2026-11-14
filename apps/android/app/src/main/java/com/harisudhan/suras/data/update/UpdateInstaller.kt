@@ -3,9 +3,9 @@ package com.harisudhan.suras.data.update
 import android.content.ClipData
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.provider.Settings
 import androidx.core.content.FileProvider
+import androidx.core.net.toUri
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
 import javax.inject.Inject
@@ -29,7 +29,7 @@ class UpdateInstaller @Inject constructor(@ApplicationContext context: Context) 
     fun openInstallPermissionSettings() {
         val intent = Intent(
             Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES,
-            Uri.parse("package:${appContext.packageName}"),
+            "package:${appContext.packageName}".toUri(),
         ).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         appContext.startActivity(intent)
     }

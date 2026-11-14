@@ -23,7 +23,7 @@ class UpdateNotifications @Inject constructor(@ApplicationContext context: Conte
     private val appContext = context.applicationContext
 
     fun ensureChannel() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return
+        // minSdk is 26, so notification channels are always available.
         val manager = appContext.getSystemService(NotificationManager::class.java) ?: return
         if (manager.getNotificationChannel(CHANNEL_ID) != null) return
         val channel = NotificationChannel(

@@ -224,9 +224,9 @@ dependencies {
     ksp(libs.androidx.hilt.compiler)
 
     implementation(libs.onnxruntime.android)
-    implementation("net.zetetic:sqlcipher-android:${libs.versions.sqlcipher.get()}@aar")
+    implementation(libs.sqlcipher.android)
     implementation(libs.androidx.sqlite)
-    implementation("net.java.dev.jna:jna:${libs.versions.jna.get()}@aar")
+    implementation(libs.jna)
 
     implementation(libs.kotlinx.coroutines.android)
 

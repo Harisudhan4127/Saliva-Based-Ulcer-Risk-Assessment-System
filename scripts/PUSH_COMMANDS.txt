@@ -1,0 +1,21 @@
+# SURAS — push to GitHub (feature/android-app)
+# Repo: https://github.com/Harisudhan4127/Saliva-Based-Ulcer-Risk-Assessment-System.git
+# NOTE: GitHub does NOT accept account passwords for HTTPS pushes. Use a PAT or SSH.
+
+cd "/run/media/harisudhan/Data/Git file/Saliva-Based-Ulcer-Risk-Assessment-System"
+
+# 1) Identity (one-time / global)
+git config --global user.name "Harisudhan4127"
+git config --global user.email "harisudhan4127@gmail.com"
+
+# 2) Authenticate (pick one)
+#    - HTTPS + PAT: create a token at https://github.com/settings/tokens and use it as the password when prompted.
+#    - GitHub CLI:  gh auth login
+#    - SSH:         git remote set-url origin git@github.com:Harisudhan4127/Saliva-Based-Ulcer-Risk-Assessment-System.git
+
+# 3) Push branch and tag (authorized; do NOT force-push, do NOT push to main)
+git push origin feature/android-app
+git push origin v2.1.0
+
+# 4) Verify
+git ls-remote --heads --tags origin | grep -E "feature/android-app|v2.1.0"

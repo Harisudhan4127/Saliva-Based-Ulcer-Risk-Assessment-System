@@ -4,6 +4,7 @@ import android.content.Context
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
 import android.util.Base64
+import androidx.core.content.edit
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.security.GeneralSecurityException
 import java.security.KeyStore
@@ -57,10 +58,12 @@ class DatabaseKeyManager @Inject constructor(@ApplicationContext context: Contex
         val cipher = Cipher.getInstance(TRANSFORMATION)
         cipher.init(Cipher.ENCRYPT_MODE, keystoreKey())
         val encrypted = cipher.doFinal(passphrase)
-        prefs.edit()
-            .putString(KEY_WRAPPED_PASSPHRASE, Base64.encodeToString(encrypted, Base64.NO_WRAP))
-            .putString(KEY_IV, Base64.encodeToString(cipher.iv, Base64.NO_WRAP))
-            .commit()
+        // Commit synchronously so the wrapped key is durably stored before the
+        // database is opened with it (apply() would be asynchronous).
+        prefs.edit(commit = true) {
+            putString(KEY_WRAPPED_PASSPHRASE, Base64.encodeToString(encrypted, Base64.NO_WRAP))
+            putString(KEY_IV, Base64.encodeToString(cipher.iv, Base64.NO_WRAP))
+        }
         return passphrase
     }
 

@@ -3,10 +3,6 @@
     <!-- Mirrors the desktop content palette: teal accent on light slate.
          The desktop's dark navy sidebar (#0f172a) is intentionally not
          reproduced on Android; see docs/DECISIONS.md. -->
-    <color name="brand_teal">#0F766E</color>
-    <color name="brand_teal_dark">#0D6460</color>
-    <color name="surface_light">#F8FAFC</color>
-    <color name="surface_dark">#121212</color>
     <color name="window_background">#F8FAFC</color>
     <color name="splash_background">#F8FAFC</color>
     <color name="splash_icon_background">#FFFFFF</color>
