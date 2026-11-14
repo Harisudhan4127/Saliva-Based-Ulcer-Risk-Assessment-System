@@ -1,0 +1,214 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "60ac4895fb524066c1c77b9ad3142c1b",
+    "entities": [
+      {
+        "tableName": "assessments",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`patientId` TEXT NOT NULL, `name` TEXT NOT NULL, `age` INTEGER NOT NULL, `gender` TEXT NOT NULL, `spicyFood` INTEGER NOT NULL, `tobacco` INTEGER NOT NULL, `alcohol` INTEGER NOT NULL, `sleepHours` REAL NOT NULL, `stress` INTEGER NOT NULL, `skipMeals` INTEGER NOT NULL, `softDrinks` INTEGER NOT NULL, `emptyStomachPain` INTEGER NOT NULL, `day1PhBefore` REAL NOT NULL, `day1PhAfter` REAL NOT NULL, `day2PhBefore` REAL NOT NULL, `day2PhAfter` REAL NOT NULL, `probability` REAL NOT NULL, `riskLevel` TEXT NOT NULL, `swbraStatus` TEXT NOT NULL, `swbraScore` INTEGER, `swbraCategory` TEXT, `appVersion` TEXT NOT NULL, `modelVersion` TEXT NOT NULL, `preprocessingVersion` TEXT NOT NULL, `swbraSpecVersion` TEXT NOT NULL, `warningsJson` TEXT NOT NULL, `createdAt` INTEGER NOT NULL, PRIMARY KEY(`patientId`))",
+        "fields": [
+          {
+            "fieldPath": "patientId",
+            "columnName": "patientId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "age",
+            "columnName": "age",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "gender",
+            "columnName": "gender",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "spicyFood",
+            "columnName": "spicyFood",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tobacco",
+            "columnName": "tobacco",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "alcohol",
+            "columnName": "alcohol",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sleepHours",
+            "columnName": "sleepHours",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stress",
+            "columnName": "stress",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "skipMeals",
+            "columnName": "skipMeals",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "softDrinks",
+            "columnName": "softDrinks",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "emptyStomachPain",
+            "columnName": "emptyStomachPain",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "day1PhBefore",
+            "columnName": "day1PhBefore",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "day1PhAfter",
+            "columnName": "day1PhAfter",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "day2PhBefore",
+            "columnName": "day2PhBefore",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "day2PhAfter",
+            "columnName": "day2PhAfter",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "probability",
+            "columnName": "probability",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "riskLevel",
+            "columnName": "riskLevel",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "swbraStatus",
+            "columnName": "swbraStatus",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "swbraScore",
+            "columnName": "swbraScore",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "swbraCategory",
+            "columnName": "swbraCategory",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "appVersion",
+            "columnName": "appVersion",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "modelVersion",
+            "columnName": "modelVersion",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "preprocessingVersion",
+            "columnName": "preprocessingVersion",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "swbraSpecVersion",
+            "columnName": "swbraSpecVersion",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "warningsJson",
+            "columnName": "warningsJson",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "createdAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "patientId"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_assessments_createdAt",
+            "unique": false,
+            "columnNames": [
+              "createdAt"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_assessments_createdAt` ON `${TABLE_NAME}` (`createdAt`)"
+          },
+          {
+            "name": "index_assessments_name",
+            "unique": false,
+            "columnNames": [
+              "name"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_assessments_name` ON `${TABLE_NAME}` (`name`)"
+          },
+          {
+            "name": "index_assessments_patientId",
+            "unique": false,
+            "columnNames": [
+              "patientId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_assessments_patientId` ON `${TABLE_NAME}` (`patientId`)"
+          }
+        ]
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '60ac4895fb524066c1c77b9ad3142c1b')"
+    ]
+  }
+}

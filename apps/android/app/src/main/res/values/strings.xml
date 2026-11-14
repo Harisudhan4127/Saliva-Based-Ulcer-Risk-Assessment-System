@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App and navigation -->
+    <string name="app_name">SURAS</string>
+    <string name="app_subtitle">Saliva-Based Ulcer Risk Assessment System</string>
+    <string name="app_tagline">Research decision-support prototype</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_new_patient">New assessment</string>
+    <string name="nav_history">History</string>
+    <string name="nav_export">Export</string>
+    <string name="nav_settings">Settings</string>
+    <string name="nav_about">About</string>
+
+    <!-- Actions -->
+    <string name="action_back">Back</string>
+    <string name="action_close">Close</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_share">Share</string>
+    <string name="action_search">Search</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_confirm">Confirm</string>
+    <string name="action_done">Done</string>
+    <string name="action_continue">Continue</string>
+    <string name="action_retry">Try again</string>
+    <string name="action_accept">Agree and continue</string>
+    <string name="action_decline">Exit</string>
+    <string name="action_check_updates">Check now</string>
+    <string name="action_export_pdf">Export PDF</string>
+    <string name="action_export_csv">Export CSV</string>
+    <string name="action_run_analysis">Run analysis</string>
+    <string name="action_view_all">View all</string>
+
+    <!-- Splash and consent -->
+    <string name="splash_loading">Preparing…</string>
+    <string name="consent_title">Before you begin</string>
+    <string name="consent_intro">SURAS estimates ulcer risk for research and decision support. Read and accept the following before using it.</string>
+    <string name="consent_research">This is a research prototype. It is not a diagnosis, not a validated medical device, and must not replace professional judgement.</string>
+    <string name="consent_local_data">Assessments are stored only on this device in an encrypted SQLCipher database. There is no analytics and no patient-data upload.</string>
+    <string name="consent_network">The only network feature is an optional update check against GitHub Releases. It sends no patient data and installs nothing without your action.</string>
+    <string name="consent_control">You can delete individual assessments or clear all local data at any time in History and Settings.</string>
+    <string name="consent_checkbox">I understand and agree to use SURAS as a research prototype.</string>
+    <string name="consent_declined">You must accept the disclaimer to use the app.</string>
+
+    <!-- Home -->
+    <string name="home_title">SURAS</string>
+    <string name="home_greeting">Ulcer risk assessment</string>
+    <string name="home_new_patient_title">New assessment</string>
+    <string name="home_new_patient_desc">Record demographics and 14 lifestyle and pH inputs.</string>
+    <string name="home_history_title">Patient history</string>
+    <string name="home_history_desc">Search assessments stored on this device.</string>
+    <string name="home_export_title">Export reports</string>
+    <string name="home_export_desc">Create and share PDF or CSV files.</string>
+    <string name="home_settings_title">Settings</string>
+    <string name="home_settings_desc">Theme, updates and local data.</string>
+    <string name="home_about_title">About</string>
+    <string name="home_about_desc">Author, model, license and disclaimers.</string>
+    <string name="home_disclaimer_short">Research decision support only. Not a diagnosis and not a validated medical device.</string>
+    <string name="home_model_version">Model %1$s · App %2$s</string>
+    <string name="home_recent">Recent assessments</string>
+    <string name="home_no_recent">No assessments saved yet.</string>
+
+    <!-- New patient -->
+    <string name="new_patient_title">New assessment</string>
+    <string name="new_patient_step">Step 1 of 2 · Patient</string>
+    <string name="patient_id_label">Patient ID</string>
+    <string name="patient_name_label">Patient name</string>
+    <string name="patient_name_hint">Full name</string>
+    <string name="new_patient_note">The patient ID is generated on this device. Nothing is uploaded.</string>
+    <string name="error_name_required">Enter a patient name.</string>
+    <string name="error_age_invalid">Enter an age between 0 and 120.</string>
+
+    <!-- Biomarker input -->
+    <string name="biomarker_title">Biomarker input</string>
+    <string name="biomarker_step">Step 2 of 2 · Inputs</string>
+    <string name="section_demographics">Patient demographics</string>
+    <string name="section_lifestyle">Lifestyle and dietary habits</string>
+    <string name="section_sleep_stress">Sleep and stress</string>
+    <string name="section_ph_day1">Gastric pH readings — day 1</string>
+    <string name="section_ph_day2">Gastric pH readings — day 2</string>
+
+    <string name="field_age">Age (years)</string>
+    <string name="field_gender">Biological sex</string>
+    <string name="field_spicy_food">Spicy food intake</string>
+    <string name="field_tobacco">Tobacco use</string>
+    <string name="field_alcohol">Alcohol consumption</string>
+    <string name="field_sleep_hours">Avg. sleep (hrs/day)</string>
+    <string name="field_stress">Stress level (1–10)</string>
+    <string name="field_skip_meals">Skips meals regularly</string>
+    <string name="field_soft_drinks">Soft drink consumption</string>
+    <string name="field_empty_stomach_pain">Pain on empty stomach</string>
+    <string name="field_day1_ph_before">Day 1 pH — before meal</string>
+    <string name="field_day1_ph_after">Day 1 pH — after meal</string>
+    <string name="field_day2_ph_before">Day 2 pH — before meal</string>
+    <string name="field_day2_ph_after">Day 2 pH — after meal</string>
+
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="gender_male">Male</string>
+    <string name="gender_female">Female</string>
+    <string name="input_hint_numeric">Enter value</string>
+    <string name="biomarker_note">Every field is required; the desktop app has no imputation. Values outside the training range are accepted with a warning.</string>
+    <string name="biomarker_running">Running analysis…</string>
+    <string name="analysis_saved">Assessment saved to encrypted history.</string>
+
+    <string name="validation_error_missing">%1$s is required.</string>
+    <string name="validation_error_number">%1$s must be a number.</string>
+    <string name="validation_error_range">%1$s is outside the allowed range.</string>
+    <string name="validation_error_value">%1$s has an invalid value.</string>
+    <string name="validation_error_internal">The input could not be validated. Please try again.</string>
+    <string name="validation_error_probability">The model returned an invalid probability.</string>
+    <string name="model_unavailable">The on-device model could not be loaded. Check the installation and try again.</string>
+    <string name="analysis_failed">Analysis failed. Please review the inputs.</string>
+    <string name="warning_outside_envelope">%1$s is outside the training data range; the estimate may be less reliable.</string>
+
+    <!-- Result -->
+    <string name="result_title">Risk estimate</string>
+    <string name="result_risk_high">Higher estimated risk</string>
+    <string name="result_risk_medium">Moderate estimated risk</string>
+    <string name="result_risk_low">Lower estimated risk</string>
+    <string name="risk_label_high">HIGH</string>
+    <string name="risk_label_medium">MEDIUM</string>
+    <string name="risk_label_low">LOW</string>
+    <string name="result_probability">Model probability: %1$s%%</string>
+    <string name="result_note_high">Discuss this estimate with a qualified clinician. It is not a diagnosis.</string>
+    <string name="result_note_medium">Consider follow-up and a lifestyle review. It is not a diagnosis.</string>
+    <string name="result_note_low">Continue routine monitoring. It is not a diagnosis.</string>
+    <string name="result_ml_output">On-device ML output</string>
+    <string name="result_swbra_title">SWBRA score</string>
+    <string name="result_swbra_unavailable">Not available</string>
+    <string name="result_swbra_reason">The documented SWBRA needs IL-6, CRP, IgA, protein and validated thresholds or units that are not defined in the research source.</string>
+    <string name="result_inputs">Inputs used</string>
+    <string name="result_versions">Versions</string>
+    <string name="result_version_app">App</string>
+    <string name="result_version_model">Model</string>
+    <string name="result_version_swbra">SWBRA spec</string>
+    <string name="result_version_preprocessing">Preprocessing spec</string>
+    <string name="result_timestamp">Assessed %1$s</string>
+    <string name="result_disclaimer">This risk estimate is for research and decision support only. It is not a diagnosis, not clinically validated, and must not replace professional judgement.</string>
+    <string name="result_not_found">This assessment could not be found.</string>
+    <string name="share_subject">SURAS risk estimate for %1$s</string>
+    <string name="share_chooser">Share report</string>
+
+    <!-- History -->
+    <string name="history_title">Patient history</string>
+    <string name="history_search_hint">Search name or patient ID</string>
+    <string name="history_empty_title">No assessments yet</string>
+    <string name="history_empty_body">Complete a new assessment to see it here.</string>
+    <string name="history_no_results">No matching assessments.</string>
+    <plurals name="history_count">
+        <item quantity="one">%1$d record</item>
+        <item quantity="other">%1$d records</item>
+    </plurals>
+    <string name="history_delete_title">Delete assessment?</string>
+    <string name="history_delete_body">This permanently removes the encrypted record from this device.</string>
+    <string name="history_deleted">Assessment deleted.</string>
+    <string name="history_open">Open assessment</string>
+    <string name="history_date">Assessed %1$s</string>
+
+    <!-- Export -->
+    <string name="export_title">Export reports</string>
+    <string name="export_intro">Files are created in the app cache and shared with the app you choose. Nothing is uploaded.</string>
+    <string name="export_csv_title">CSV</string>
+    <string name="export_csv_desc">One row per assessment, suitable for spreadsheets.</string>
+    <string name="export_pdf_title">PDF</string>
+    <string name="export_pdf_desc">Formatted report with the disclaimer on every page.</string>
+    <string name="export_no_records">There are no assessments to export.</string>
+    <string name="export_share_chooser">Share export</string>
+    <string name="export_failed">Export failed: %1$s</string>
+    <string name="export_success">Export ready.</string>
+    <string name="export_filename_csv">suras-assessments-%1$s.csv</string>
+    <string name="export_filename_pdf">suras-assessments-%1$s.pdf</string>
+    <string name="export_single_pdf">suras-assessment-%1$s.pdf</string>
+    <string name="export_single_csv">suras-assessment-%1$s.csv</string>
+    <string name="export_report_title">SURAS assessment report</string>
+    <string name="export_report_generated">Generated %1$s</string>
+    <string name="export_report_author">Author: Harisudhan, B.Tech AI and ML final-year project</string>
+    <string name="export_report_disclaimer">Research decision support only. Not a diagnosis. Not clinically validated.</string>
+    <string name="export_pdf_risk">%1$s RISK</string>
+    <string name="export_pdf_swbra">%1$s · status %2$s</string>
+    <string name="export_pdf_versions">App %1$s · Model %2$s · Preprocessing %3$s · SWBRA spec %4$s</string>
+    <string name="export_pdf_footer">SURAS research prototype — not a diagnosis and not a validated medical device.</string>
+    <string name="export_pdf_page">Page %1$d</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_theme">Theme</string>
+    <string name="settings_theme_system">System</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_updates">Updates</string>
+    <string name="settings_auto_update">Check for updates automatically</string>
+    <string name="settings_auto_update_desc">Uses WorkManager about once a day. Only the GitHub Releases API is contacted; no patient data is sent.</string>
+    <string name="settings_checking">Checking…</string>
+    <string name="settings_update_not_configured">Update channel is not configured (TODO_FILL).</string>
+    <string name="settings_update_uptodate">You are up to date.</string>
+    <string name="settings_update_available">Version %1$s is available.</string>
+    <string name="settings_update_error">Update check failed. Check your connection.</string>
+    <string name="settings_update_download">Download and install</string>
+    <string name="settings_update_downloading">Downloading and verifying…</string>
+    <string name="settings_update_verified">Checksum verified. Opening the system installer…</string>
+    <string name="settings_update_checksum_failed">Checksum verification failed. The download was discarded.</string>
+    <string name="settings_update_permission">Allow SURAS to install unknown apps, then try again.</string>
+    <string name="settings_update_no_digest">This release has no SHA-256 digest; installation is refused.</string>
+    <string name="settings_privacy">Privacy and security</string>
+    <string name="settings_encryption">Local database: SQLCipher encryption enabled</string>
+    <string name="settings_screen_capture">Screen capture is blocked by FLAG_SECURE</string>
+    <string name="settings_network">Patient data is never uploaded. Update checks contact GitHub only.</string>
+    <string name="settings_data">Local data</string>
+    <string name="settings_clear_history">Clear all assessments</string>
+    <string name="settings_clear_title">Clear all assessments?</string>
+    <string name="settings_clear_body">This permanently deletes every encrypted assessment on this device.</string>
+    <string name="settings_cleared">All assessments deleted.</string>
+    <string name="settings_about_app">App version %1$s (%2$d)</string>
+    <string name="settings_model_version">Model %1$s</string>
+    <string name="settings_update_digest_hint">Downloads are verified against the release SHA-256 before the system installer opens.</string>
+    <string name="settings_update_install">Install update</string>
+    <string name="settings_notifications_denied">Notifications are disabled; automatic checks still run but cannot alert you.</string>
+    <string name="settings_about_button">Open About</string>
+    <string name="settings_update_release_notes">Release notes</string>
+
+    <!-- About -->
+    <string name="about_title">About SURAS</string>
+    <string name="about_project">Saliva-Based Ulcer Risk Assessment System</string>
+    <string name="about_author_heading">Author</string>
+    <string name="about_author_name">Harisudhan</string>
+    <string name="about_author_degree">B.Tech Artificial Intelligence and Machine Learning</string>
+    <string name="about_author_role">Final-year project author</string>
+    <string name="about_contact_heading">Contact</string>
+    <string name="about_email">Email</string>
+    <string name="about_github">GitHub</string>
+    <string name="about_linkedin">LinkedIn</string>
+    <string name="about_contact_todo">TODO_FILL</string>
+    <string name="about_model_heading">Model</string>
+    <string name="about_model_body">On-device gradient-boosted classifier trained on the project\'s 300-row internal dataset. Metrics are internal only; the model is not externally or clinically validated.</string>
+    <string name="about_swbra_heading">SWBRA</string>
+    <string name="about_swbra_body">The README describes a Saliva Weighted Biomarker Risk Algorithm, but the shipped implementation does not contain it. Thresholds, units and missing-value handling are UNKNOWN, so the app reports SWBRA as unavailable instead of inventing a score.</string>
+    <string name="about_license_heading">License</string>
+    <string name="about_license_body">Academic and research use only. Not an OSI-approved open-source license; legal review is required before any other use.</string>
+    <string name="about_disclaimer_heading">Medical disclaimer</string>
+    <string name="about_disclaimer_body">SURAS is a research prototype and decision-support aid. It is not a medical device, does not provide a diagnosis, and has not been clinically validated. Do not use it as the sole basis for clinical decisions.</string>
+    <string name="about_data_heading">Data handling</string>
+    <string name="about_data_body">Assessments are stored only on this device in a SQLCipher-encrypted database. The app has no analytics. Background update checks contact GitHub Releases and send no patient data.</string>
+    <string name="about_version_line">App %1$s · Model %2$s · SWBRA spec %3$s</string>
+
+    <!-- Update notification -->
+    <string name="update_channel_name">App updates</string>
+    <string name="update_channel_desc">Notifies when a verified SURAS update is available.</string>
+    <string name="update_notification_title">SURAS update available</string>
+    <string name="update_notification_body">Version %1$s is available. Open Settings to review it.</string>
+
+    <!-- Generic -->
+    <string name="loading">Loading…</string>
+    <string name="generic_error">Something went wrong.</string>
+
+    <!-- Content descriptions -->
+    <string name="cd_app_logo">SURAS logo</string>
+    <string name="cd_back">Back</string>
+    <string name="cd_search">Search assessments</string>
+    <string name="cd_delete">Delete assessment</string>
+    <string name="cd_open">Open assessment</string>
+    <string name="cd_risk_high">High risk indicator</string>
+    <string name="cd_risk_medium">Moderate risk indicator</string>
+    <string name="cd_risk_low">Low risk indicator</string>
+    <string name="cd_update">Check for updates</string>
+    <string name="cd_share">Share</string>
+</resources>
