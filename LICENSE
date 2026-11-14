@@ -1,0 +1,61 @@
+SURAS — Academic Research License
+=================================
+
+Copyright (c) 2025-2026 Harisudhan. All rights reserved.
+
+This license is NOT an open-source license and has NOT been reviewed by a
+lawyer. It is written for a final-year academic project so that the work can be
+read, studied and cited while remaining non-commercial. If you intend to use
+this software commercially, clinically, or to redistribute it, obtain written
+permission from the copyright holder and take your own legal advice first.
+
+1. Grant
+   You are granted a non-exclusive, non-transferable, royalty-free license to
+   view, clone, build and use this software for personal study, teaching, and
+   non-commercial academic research, provided that this license and the
+   copyright notice are retained in all copies and derivative works.
+
+2. Restrictions
+   You may NOT:
+   a. use this software, in whole or in part, for any commercial purpose;
+   b. use this software for the diagnosis, treatment, prevention or management
+      of any disease or condition in humans or animals;
+   c. use this software in any clinical, medical, or patient-facing setting;
+   d. sell, sublicense, rent, or offer this software as a paid service;
+   e. remove or alter this license, the copyright notice, or any disclaimer;
+   f. represent this software or its outputs as clinically validated, approved,
+      certified, or fit for a medical purpose.
+
+3. No medical advice
+   This software is a research prototype. It produces statistical risk
+   estimates for decision support and demonstration only. It does not provide a
+   diagnosis and must not be used as a substitute for professional medical
+   judgement. See the project README and docs/OPEN_QUESTIONS.md.
+
+4. No warranty
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+
+5. Limitation of liability
+   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+   USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+6. Third-party components
+   This software bundles or depends on third-party components under their own
+   licenses, including but not limited to:
+     - ONNX Runtime (MIT License)
+     - scikit-learn (BSD-3-Clause)
+     - PyQt5 (GNU GPL v3 — see note below)
+     - AndroidX / Jetpack Compose (Apache License 2.0)
+     - SQLCipher / sqlcipher-android (BSD-style; see upstream)
+     - UniFFI and PyO3 (MPL-2.0 / Apache-2.0)
+   Your use of those components is governed by their respective licenses.
+   NOTE: PyQt5 is distributed under the GNU GPL v3, which may impose additional
+   obligations on distribution of the desktop application. This has not been
+   legally reviewed. See docs/OPEN_QUESTIONS.md.
+
+Contact: the copyright holder (see README). Email/GitHub/LinkedIn are not
+published in this repository; see shared/author.json.
