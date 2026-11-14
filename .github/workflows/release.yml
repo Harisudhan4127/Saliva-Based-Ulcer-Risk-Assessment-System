@@ -84,7 +84,7 @@ jobs:
             "build-tools;36.0.0" \
             "ndk;27.0.12077973"
       - name: Build the shared native core for Android
-        run: ANDROID_NDK_HOME="$ANDROID_SDK_ROOT/ndk/27.0.12077973" scripts/build_android_core.sh
+        run: ANDROID_NDK_HOME="$ANDROID_SDK_ROOT/ndk/27.0.12077973" bash scripts/build_android_core.sh
       - name: Materialise the signing keystore
         env:
           KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
