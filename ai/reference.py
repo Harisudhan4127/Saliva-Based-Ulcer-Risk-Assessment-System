@@ -12,11 +12,24 @@ from __future__ import annotations
 
 import json
 import math
+import os
+import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
-ROOT = Path(__file__).resolve().parents[1]
-SHARED = ROOT / "shared"
+
+def _resolve_shared_dir() -> Path:
+    """Locate shared/ in source checkouts and in frozen PyInstaller builds."""
+    override = os.environ.get("SURAS_SHARED_DIR")
+    if override:
+        return Path(override).expanduser().resolve()
+    if getattr(sys, "frozen", False):
+        return Path(getattr(sys, "_MEIPASS", Path(sys.executable).parent)) / "shared"
+    return Path(__file__).resolve().parents[1] / "shared"
+
+
+SHARED = _resolve_shared_dir()
+ROOT = SHARED.parent
 
 BOOLEAN_FIELDS = (
     "Spicy_Food",
