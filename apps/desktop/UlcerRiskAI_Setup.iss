@@ -5,9 +5,7 @@
 ; ─────────────────────────────────────────────────────────────────────────────
 
 #define AppName      "Ulcer Risk AI"
-#define AppVersion   "2.0.0"
-#define AppPublisher "Harisudhan"
-#define AppPublisher "Harisudhan"
+#define AppVersion   "2.1.0"
 #define AppPublisher "Harisudhan"
 #define AppURL       "https://github.com/Harisudhan4127/Saliva-Based-Ulcer-Risk-Assessment-System"
 #define AppExeName   "UlcerRiskAI.exe"
