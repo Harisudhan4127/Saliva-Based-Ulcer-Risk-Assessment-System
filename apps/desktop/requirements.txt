@@ -1,7 +1,16 @@
-pyinstaller
+# Runtime dependencies for the SURAS desktop application.
+#
+# The risk model is a checksum-verified ONNX graph loaded through onnxruntime.
+# joblib/pickle is intentionally NOT a dependency: unpickling a model executes
+# arbitrary code, which is not an acceptable supply-chain surface for a medical
+# research tool (see docs/SECURITY_AUDIT.md).
+PyQt5
 numpy
 pandas
 scikit-learn
-PyQt5
+onnxruntime
 reportlab
-joblib
+
+# Packaging + test tooling (developer machines / CI only).
+pyinstaller
+pytest

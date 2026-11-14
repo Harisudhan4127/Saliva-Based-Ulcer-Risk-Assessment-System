@@ -1,5 +1,4 @@
 import sys, os, uuid, sqlite3
-import joblib
 import pandas as pd
 from datetime import datetime
 
@@ -7,8 +6,11 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon, QFont, QColor, QPalette, QPixmap, QPainter, QBrush, QPen, QFontDatabase
 from PyQt5.QtCore import Qt, QThread, pyqtSignal, QPropertyAnimation, QEasingCurve, QTimer
 
-# ── Updater ────────────────────────────────────────────────────────────────────
+# ── Shared modules ─────────────────────────────────────────────────────────────
 from updater import UpdateWorker, launch_installer, CURRENT_VERSION
+import auth
+from inference import make_loader
+from paths import database_path
 
 try:
     from reportlab.lib.pagesizes import A4
@@ -27,10 +29,9 @@ if getattr(sys, 'frozen', False):
 else:
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-model_path    = os.path.join(BASE_DIR, "src", "data.pkl")
-user_data_dir = os.path.join(BASE_DIR, "User_data")
-os.makedirs(user_data_dir, exist_ok=True)
-DB_PATH = os.path.join(user_data_dir, "patients.db")
+# Writable patient data lives in the per-user data directory, never inside the
+# PyInstaller extraction directory (which is deleted when the app exits).
+DB_PATH = str(database_path())
 
 feature_names = [
     "Age", "Gender", "Spicy_Food", "Tobacco", "Alcohol",
@@ -40,16 +41,8 @@ feature_names = [
     "Day2_pH_Before", "Day2_pH_After"
 ]
 
-# ─── LOAD MODEL ───────────────────────────────────────────────────────────────
-try:
-    model = joblib.load(model_path)
-except Exception:
-    class _MockModel:
-        def predict_proba(self, df):
-            import random
-            p = random.random()
-            return [[1 - p, p]]
-    model = _MockModel()
+# The ONNX model is loaded by MainWindow in a background thread. Until it is
+# ready no prediction is possible; there is deliberately no random fallback.
 
 # ─── DATABASE ─────────────────────────────────────────────────────────────────
 def init_db():
@@ -555,12 +548,13 @@ class UpdateBanner(QWidget):
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# LOGIN
+# LOGIN  (local access password, configured on first run)
 # ═══════════════════════════════════════════════════════════════════════════════
 class LoginPage(QWidget):
     def __init__(self, on_login):
         super().__init__()
         self.on_login = on_login
+        self._configured = auth.is_configured()
         self._build()
 
     def _build(self):
@@ -586,24 +580,36 @@ class LoginPage(QWidget):
         title.setStyleSheet("font-size:22px; font-weight:700; color:#0f172a; background:transparent; border:none;")
         cl.addWidget(title)
 
-        sub = QLabel("Clinical Assessment System")
+        sub = QLabel(
+            "Create a local access password"
+            if not self._configured
+            else "Clinical Assessment System"
+        )
         sub.setAlignment(Qt.AlignCenter)
+        sub.setWordWrap(True)
         sub.setStyleSheet("font-size:13px; color:#64748b; margin-bottom:12px; background:transparent; border:none;")
         cl.addWidget(sub)
 
-        self.user_input = QLineEdit()
-        self.user_input.setPlaceholderText("Username")
-        self.user_input.setFixedHeight(44)
-        cl.addWidget(self.user_input)
-
         self.pwd_input = QLineEdit()
-        self.pwd_input.setPlaceholderText("Password")
+        self.pwd_input.setPlaceholderText(
+            f"Password (min {auth.MIN_PASSWORD_LENGTH} characters)"
+            if not self._configured
+            else "Local access password"
+        )
         self.pwd_input.setEchoMode(QLineEdit.Password)
         self.pwd_input.setFixedHeight(44)
         self.pwd_input.returnPressed.connect(self._login)
         cl.addWidget(self.pwd_input)
 
-        btn = QPushButton("Sign In")
+        self.confirm_input = QLineEdit()
+        self.confirm_input.setPlaceholderText("Confirm password")
+        self.confirm_input.setEchoMode(QLineEdit.Password)
+        self.confirm_input.setFixedHeight(44)
+        self.confirm_input.returnPressed.connect(self._login)
+        self.confirm_input.setVisible(not self._configured)
+        cl.addWidget(self.confirm_input)
+
+        btn = QPushButton("Set Password" if not self._configured else "Unlock")
         btn.setObjectName("btnPrimary")
         btn.setFixedHeight(44)
         btn.setCursor(Qt.PointingHandCursor)
@@ -625,21 +631,47 @@ class LoginPage(QWidget):
 
         self.err = QLabel("")
         self.err.setAlignment(Qt.AlignCenter)
+        self.err.setWordWrap(True)
         self.err.setStyleSheet("color:#dc2626; font-size:12px; background:transparent; border:none;")
         cl.addWidget(self.err)
 
+        hint = QLabel(
+            "The password is stored as a salted hash in your user data folder. "
+            "It protects the app on this computer only. There is no default password."
+            if not self._configured
+            else "Local access only. Delete access.json in the user data folder to reset."
+        )
+        hint.setAlignment(Qt.AlignCenter)
+        hint.setWordWrap(True)
+        hint.setStyleSheet("font-size:11px; color:#94a3b8; background:transparent; border:none;")
+        cl.addWidget(hint)
+
         outer.addWidget(card, alignment=Qt.AlignCenter)
 
-        v = QLabel(f"Version {CURRENT_VERSION.lstrip("v")}")
+        v = QLabel(f"Version {CURRENT_VERSION}")
         v.setAlignment(Qt.AlignCenter)
         v.setStyleSheet("color:#94a3b8; font-size:11px;")
         outer.addWidget(v)
 
     def _login(self):
-        if self.user_input.text() == "admin" and self.pwd_input.text() == "admin@123":
+        password = self.pwd_input.text()
+        if not self._configured:
+            if password != self.confirm_input.text():
+                self.err.setText("Passwords do not match.")
+                return
+            try:
+                auth.set_password(password)
+            except auth.PasswordError as exc:
+                self.err.setText(str(exc))
+                return
+            self._configured = True
+            self.on_login()
+            return
+
+        if auth.verify_password(password):
             self.on_login()
         else:
-            self.err.setText("Invalid credentials. Please try again.")
+            self.err.setText("Incorrect password. Please try again.")
             self.pwd_input.clear()
 
 
@@ -707,7 +739,23 @@ class NewPatientPage(QWidget):
         self.inputs = {}
         self._current_id  = None
         self._result_data = None
+        self.model = None
         self._build()
+        self.set_model(None, "loading in the background")
+
+    def set_model(self, model, error=None):
+        """Enable analysis only when a verified model is available."""
+        self.model = model
+        self.btn_analyze.setEnabled(model is not None)
+        if model is None:
+            self.model_status.setText(
+                "Risk model unavailable"
+                + (f" ({error})" if error else "")
+                + ". Analysis is disabled; check shared/model/model.onnx."
+            )
+            self.model_status.show()
+        else:
+            self.model_status.hide()
 
     def reset_for_new(self):
         self._current_id  = "PAT-" + str(uuid.uuid4())[:8].upper()
@@ -764,6 +812,15 @@ class NewPatientPage(QWidget):
         ttl = QLabel("New Patient Assessment")
         ttl.setStyleSheet("font-size:20px; font-weight:700; color:#0f172a;")
         vlay.addWidget(ttl)
+
+        self.model_status = QLabel("")
+        self.model_status.setWordWrap(True)
+        self.model_status.setStyleSheet(
+            "background:#fffbeb; border:1px solid #fcd34d; border-radius:6px; "
+            "padding:8px; color:#92400e; font-size:12px;"
+        )
+        self.model_status.hide()
+        vlay.addWidget(self.model_status)
 
         # Patient ID strip
         id_card = QFrame(); id_card.setObjectName("card")
@@ -880,16 +937,28 @@ class NewPatientPage(QWidget):
         return pd.DataFrame([values], columns=feature_names)
 
     def _analyze(self):
+        if self.model is None:
+            QMessageBox.warning(self, "Model Unavailable",
+                "The risk model is not loaded, so no prediction can be made. "
+                "Restart the app. If the problem persists, verify that "
+                "shared/model/model.onnx matches shared/model/SHA256SUMS.")
+            return
         try:
-            df   = self._collect_df()
-            prob = model.predict_proba(df)[0][1]
-            risk = "HIGH" if prob > 0.7 else "MEDIUM" if prob > 0.3 else "LOW"
-            self._show_result(risk, prob)
-            self.btn_save.setEnabled(True)
-            self.btn_pdf.setEnabled(True)
+            df = self._collect_df()
         except Exception as e:
             QMessageBox.warning(self, "Input Error",
                 f"Please check all fields contain valid numeric values.\n\nDetail: {e}")
+            return
+        try:
+            prob = self.model.predict_proba(df)[0][1]
+        except Exception as e:
+            QMessageBox.critical(self, "Model Error",
+                f"The model could not produce a prediction.\n\nDetail: {e}")
+            return
+        risk = "HIGH" if prob > 0.7 else "MEDIUM" if prob > 0.3 else "LOW"
+        self._show_result(risk, prob)
+        self.btn_save.setEnabled(True)
+        self.btn_pdf.setEnabled(True)
 
     def _show_result(self, risk, prob):
         styles = {
@@ -1180,6 +1249,18 @@ class MainWindow(QWidget):
 
         # Auto-check on startup after 2 s (non-blocking)
         QTimer.singleShot(2000, self.update_banner.start_check)
+
+        # Load and verify the ONNX model off the UI thread.
+        self._model_worker = make_loader()()
+        self._model_worker.loaded.connect(self._on_model_loaded)
+        self._model_worker.failed.connect(self._on_model_failed)
+        self._model_worker.start()
+
+    def _on_model_loaded(self, model):
+        self.form_page.set_model(model)
+
+    def _on_model_failed(self, message):
+        self.form_page.set_model(None, message)
 
     def _switch(self, idx):
         self.stack.setCurrentIndex(idx)
