@@ -154,8 +154,8 @@ jobs:
           python -m pip install --upgrade pip pip-audit
           pip-audit -r apps/desktop/requirements.txt || true
       - name: OSV scan
-        uses: google/osv-scanner-action/osv-scanner-action@v1
         continue-on-error: true
-        with:
-          scan-args: |-
-            --lockfile=core/rust/Cargo.lock
+        run: |
+          curl -sSfL "https://github.com/google/osv-scanner/releases/latest/download/osv-scanner_linux_amd64" -o /tmp/osv-scanner
+          chmod +x /tmp/osv-scanner
+          /tmp/osv-scanner --lockfile=core/rust/Cargo.lock
