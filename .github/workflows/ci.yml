@@ -80,7 +80,13 @@ jobs:
         with:
           distribution: temurin
           java-version: "21"
-      - uses: android-actions/setup-android@v3
+      # Use the preinstalled Android SDK on ubuntu-latest instead of
+      # android-actions/setup-android, which can fail bootstrapping the
+      # deprecated "tools" package with newer cmdline-tools.
+      - name: Set up Android SDK environment
+        run: |
+          echo "ANDROID_HOME=${ANDROID_HOME:-/usr/local/lib/android/sdk}" >> "$GITHUB_ENV"
+          echo "ANDROID_SDK_ROOT=${ANDROID_SDK_ROOT:-/usr/local/lib/android/sdk}" >> "$GITHUB_ENV"
       - uses: dtolnay/rust-toolchain@stable
         with:
           targets: aarch64-linux-android,x86_64-linux-android
@@ -93,8 +99,17 @@ jobs:
           tool: cargo-ndk
       - name: Install Android SDK platform and NDK
         run: |
-          yes | "${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager" --licenses >/dev/null || true
-          "${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager" --install \
+          SDK_ROOT="${ANDROID_SDK_ROOT:-${ANDROID_HOME:-/usr/local/lib/android/sdk}}"
+          SDKMANAGER="${SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager"
+          if [ ! -x "$SDKMANAGER" ]; then
+            SDKMANAGER="$(find "${SDK_ROOT}/cmdline-tools" -maxdepth 2 -name sdkmanager -type f 2>/dev/null | sort | tail -n1)"
+          fi
+          if [ -z "$SDKMANAGER" ] || [ ! -x "$SDKMANAGER" ]; then
+            echo "sdkmanager not found under ${SDK_ROOT}/cmdline-tools" >&2
+            exit 1
+          fi
+          yes | "$SDKMANAGER" --licenses >/dev/null || true
+          "$SDKMANAGER" --sdk_root="$SDK_ROOT" --install \
             "platform-tools" \
             "platforms;android-37" \
             "build-tools;36.0.0" \
