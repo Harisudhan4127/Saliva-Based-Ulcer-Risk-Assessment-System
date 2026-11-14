@@ -34,6 +34,12 @@ private_data/
 *.pt
 *.pth
 
+# ─── Datasets (provenance unknown; never commit) ───────────────────────────
+# The training dataset is not distributed. Retraining requires supplying it
+# locally; the shipped ONNX model and its golden/parity vectors are committed.
+apps/desktop/src/data.csv
+*.enc
+
 # ─── Python ────────────────────────────────────────────────────────────────
 __pycache__/
 *.py[cod]
