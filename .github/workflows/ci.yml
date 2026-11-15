@@ -117,7 +117,7 @@ jobs:
       - name: Build the shared native core for Android
         run: ANDROID_NDK_HOME="$ANDROID_SDK_ROOT/ndk/27.0.12077973" bash scripts/build_android_core.sh
       - name: Gradle cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: |
             ~/.gradle/caches
