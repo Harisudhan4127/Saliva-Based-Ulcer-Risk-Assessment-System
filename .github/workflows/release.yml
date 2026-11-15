@@ -113,7 +113,7 @@ jobs:
           (cd dist && sha256sum ./* > SHA256SUMS)
           ls -l dist
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: suras-android-${{ needs.verify-version.outputs.version }}
           path: dist/
