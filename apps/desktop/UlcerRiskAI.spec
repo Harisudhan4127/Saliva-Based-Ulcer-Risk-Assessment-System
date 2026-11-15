@@ -15,10 +15,11 @@ finds them at runtime.
 
 from pathlib import Path
 
-# apps/desktop/UlcerRiskAI.spec -> repo root is two levels up.
-REPO_ROOT = Path(SPECPATH).resolve().parents[2]
+# apps/desktop/UlcerRiskAI.spec -> repo root is one level up (apps/desktop -> repo).
+SPECPATH_DIR = Path(SPECPATH).resolve()
+REPO_ROOT = SPECPATH_DIR.parents[1]
 SHARED_DIR = REPO_ROOT / "shared"
-DESKTOP_DIR = Path(SPECPATH).resolve()
+DESKTOP_DIR = SPECPATH_DIR
 
 datas = [
     # Shared contracts + checksum-verified ONNX model.
