@@ -1,10 +1,16 @@
 # Linux release artifacts
 
-Place the final Linux desktop application bundle/archive here with `SHA256SUMS`.
+- `suras-2.1.0-linux-x86_64.tar.gz` — PyInstaller one-folder desktop bundle (`UlcerRiskAI/`) packaged for Linux x86_64.
+- `SHA256SUMS` — SHA-256 checksum for the archive.
 
-**To produce:**
-1. Install desktop dependencies (`apps/desktop/requirements.txt`, including PyInstaller).
-2. From `apps/desktop/`: `pyinstaller UlcerRiskAI.spec`
-3. Package `dist/UlcerRiskAI/` (e.g. tarball) and record checksums.
+## Build provenance (local)
+- Built from `apps/desktop/UlcerRiskAI.spec` (PyInstaller 6.22.3, Python 3.14 venv on Linux).
+- Runtime/functional verification on target Linux systems: **UNVERIFIED**.
 
-If a verified Linux build is generated, add it to this folder and update this README/checksums.
+## Reproduce
+```bash
+cd apps/desktop
+python -m pip install -r requirements.txt pyinstaller
+python -m PyInstaller --noconfirm --clean UlcerRiskAI.spec
+tar -C dist -czf suras-2.1.0-linux-x86_64.tar.gz UlcerRiskAI
+```
