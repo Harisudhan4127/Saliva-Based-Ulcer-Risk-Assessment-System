@@ -1,0 +1,28 @@
+# SURAS git/release sync commands (review before running)
+# Local state prepared: branches main/android/windows/linux @ a30e499; tags v2.0.0, v2.1.0 (v2.1.0 -> a30e499).
+# Remote may still have: origin/feature/android-app, origin/v2.0.0-base, old tag refs (v2.0.0-desktop), and v2.1.0 pointing elsewhere.
+
+# 1) Push updated branches (after `git fetch origin` and authentication)
+git push origin main
+git push origin android
+git push origin windows
+git push origin linux
+
+# 2) (Optional) Delete unwanted remote branches if no longer needed
+# git push origin --delete feature/android-app
+# git push origin --delete v2.0.0-base
+
+# 3) Tag cleanup/sync (DESTRUCTIVE to remote tags - confirm intent)
+# Remove redundant tag remotely (if present):
+# git push origin :refs/tags/v2.0.0-desktop
+
+# Update remote v2.1.0 to match local (local v2.1.0 -> a30e499):
+# git push origin :refs/tags/v2.1.0   # delete remote tag ref
+# git push origin v2.1.0               # push updated tag
+
+# NOTE:
+# - Do NOT force-push branches.
+# - Android build (build12) may still be running; if it produces a different release APK,
+#   update Releases/android/ + SHA256SUMS, commit, sync branches/tags, then push.
+# - Windows artifact is not included in Releases/windows (pending).
+# - SURAS is a research prototype (decision support), not a diagnosis.
