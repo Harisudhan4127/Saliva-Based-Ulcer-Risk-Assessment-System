@@ -137,5 +137,5 @@ jobs:
           gh release create "v${VERSION}" \
             --draft \
             --title "SURAS v${VERSION}" \
-            --notes "Research prototype build. See CHANGELOG.md. Not clinically validated." \
+            --notes "Research prototype build. See CHANGELOG.md. For research and decision support only." \
             dist/*

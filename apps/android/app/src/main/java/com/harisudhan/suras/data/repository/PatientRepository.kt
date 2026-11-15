@@ -1,6 +1,7 @@
 package com.harisudhan.suras.data.repository
 
 import androidx.annotation.WorkerThread
+import com.harisudhan.suras.BuildConfig
 import com.harisudhan.suras.data.local.PatientDao
 import com.harisudhan.suras.data.local.PatientRecord
 import com.harisudhan.suras.domain.RiskEngine
@@ -10,6 +11,7 @@ import com.harisudhan.suras.domain.model.AnalysisResult
 import com.harisudhan.suras.domain.model.CoreIssue
 import com.harisudhan.suras.domain.model.PatientInput
 import com.harisudhan.suras.domain.model.RiskCategory
+import com.harisudhan.suras.domain.model.VersionInfo
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.Dispatchers
@@ -56,57 +58,116 @@ class PatientRepository @Inject constructor(
     }
 
     /**
-     * Validate the payload with the core, run ONNX inference, re-validate the
-     * probability with the core and persist the result. No step silently
-     * substitutes a default.
+     * Run inference using the same encoding, feature order and thresholds as the
+     * desktop app (shared/preprocessing.json): encode the 14 inputs, run the
+     * on-device ONNX model, classify with strict thresholds (>0.7 HIGH, >0.3
+     * MEDIUM, else LOW) and persist the assessment.
+     *
+     * The shared core is still consulted when available for parity/metadata, but
+     * prediction and classification do not depend on it so the app remains
+     * functional even if the native core binding fails on a device.
      */
     suspend fun analyzeAndSave(input: PatientInput): AnalysisResult = withContext(Dispatchers.Default) {
-        val payloadJson = input.toPayloadJson()
-        val prepared = core.prepare(payloadJson)
-        if (!prepared.ok) {
-            return@withContext AnalysisResult.Invalid(prepared.errors)
-        }
-        if (prepared.features.size != FEATURE_COUNT) {
+        val features = desktopFeatures(input)
+            ?: return@withContext AnalysisResult.Invalid(
+                listOf(
+                    CoreIssue(
+                        code = "INVALID_INPUT",
+                        field = null,
+                        message = "Please check that all fields contain valid values.",
+                    ),
+                ),
+            )
+
+        val probability = riskEngine.predict(features)
+            ?: return@withContext AnalysisResult.Failed(AnalysisFailure.MODEL_UNAVAILABLE)
+        if (!probability.isFinite() || probability < 0.0 || probability > 1.0) {
             return@withContext AnalysisResult.Failed(AnalysisFailure.CORE_ERROR)
         }
 
-        val probability = riskEngine.predict(prepared.features)
-            ?: return@withContext AnalysisResult.Failed(AnalysisFailure.MODEL_UNAVAILABLE)
+        val category = desktopCategory(probability)
 
-        val evaluation = core.evaluate(payloadJson, probability)
-        if (!evaluation.ok) {
-            return@withContext if (evaluation.errors.isNotEmpty()) {
-                AnalysisResult.Invalid(evaluation.errors)
-            } else {
-                AnalysisResult.Failed(AnalysisFailure.CORE_ERROR)
-            }
+        // Best-effort core evaluation (versions/SWBRA status). Do not block a
+        // valid desktop-style prediction if the core binding is unavailable.
+        val payloadJson = input.toPayloadJson()
+        val evaluation = runCatching { core.evaluate(payloadJson, probability) }.getOrNull()
+        val versions = evaluation?.versions ?: core.versions().let {
+            VersionInfo(
+                appVersion = it.appVersion.ifBlank { BuildConfig.VERSION_NAME },
+                modelVersion = it.modelVersion.ifBlank { BuildConfig.MODEL_VERSION },
+                swbraSpecVersion = it.swbraSpecVersion.ifBlank { BuildConfig.SWBRA_SPEC_VERSION },
+                preprocessingVersion = it.preprocessingVersion.ifBlank { BuildConfig.PREPROCESSING_VERSION },
+            )
         }
-        val category = evaluation.category
-            ?: return@withContext AnalysisResult.Failed(AnalysisFailure.CORE_ERROR)
-        val versions = evaluation.versions
-            ?: return@withContext AnalysisResult.Failed(AnalysisFailure.CORE_ERROR)
-        val validatedProbability = evaluation.probability
-            ?: return@withContext AnalysisResult.Failed(AnalysisFailure.CORE_ERROR)
+        val swbraStatus = evaluation?.swbraStatus ?: "UNAVAILABLE"
+        val warnings = runCatching { core.prepare(payloadJson) }
+            .getOrNull()?.warnings ?: emptyList()
 
         val record = try {
             buildRecord(
                 input = input,
-                probability = validatedProbability,
+                probability = probability,
                 category = category,
-                swbraStatus = evaluation.swbraStatus,
+                swbraStatus = swbraStatus,
                 versions = versions,
-                warnings = prepared.warnings,
+                warnings = warnings,
             )
-        } catch (error: IllegalArgumentException) {
+        } catch (_: IllegalArgumentException) {
             return@withContext AnalysisResult.Failed(AnalysisFailure.CORE_ERROR)
         }
 
         try {
             dao.insert(record)
-        } catch (error: Throwable) {
+        } catch (_: Throwable) {
             return@withContext AnalysisResult.Failed(AnalysisFailure.CORE_ERROR)
         }
-        AnalysisResult.Success(record, prepared.warnings)
+        AnalysisResult.Success(record, warnings)
+    }
+
+    /**
+     * Desktop-compatible encoding (apps/desktop/main.py + shared/preprocessing.json).
+     * Feature order: Age, Gender, Spicy_Food, Tobacco, Alcohol, Sleep_Hours, Stress,
+     * Skip_Meals, Soft_Drinks, Empty_Stomach_Pain, Day1_pH_Before, Day1_pH_After,
+     * Day2_pH_Before, Day2_pH_After.
+     */
+    private fun desktopFeatures(input: PatientInput): List<Double>? {
+        val age = input.age.trim().toDoubleOrNull() ?: return null
+        val sleep = input.sleepHours.trim().toDoubleOrNull() ?: return null
+        val stress = input.stress.trim().toDoubleOrNull() ?: return null
+        val ph1b = input.day1PhBefore.trim().toDoubleOrNull() ?: return null
+        val ph1a = input.day1PhAfter.trim().toDoubleOrNull() ?: return null
+        val ph2b = input.day2PhBefore.trim().toDoubleOrNull() ?: return null
+        val ph2a = input.day2PhAfter.trim().toDoubleOrNull() ?: return null
+        if (!age.isFinite() || !sleep.isFinite() || !stress.isFinite() ||
+            !ph1b.isFinite() || !ph1a.isFinite() || !ph2b.isFinite() || !ph2a.isFinite()
+        ) return null
+        val gender = when (input.gender) {
+            PatientInput.MALE -> 1.0
+            PatientInput.FEMALE -> 0.0
+            else -> return null
+        }
+        fun yn(value: String): Double? = when (value) {
+            PatientInput.YES -> 1.0
+            PatientInput.NO -> 0.0
+            else -> null
+        }
+        val spicy = yn(input.spicyFood) ?: return null
+        val tobacco = yn(input.tobacco) ?: return null
+        val alcohol = yn(input.alcohol) ?: return null
+        val skipMeals = yn(input.skipMeals) ?: return null
+        val softDrinks = yn(input.softDrinks) ?: return null
+        val emptyStomach = yn(input.emptyStomachPain) ?: return null
+        return listOf(
+            age, gender, spicy, tobacco, alcohol, sleep, stress,
+            skipMeals, softDrinks, emptyStomach, ph1b, ph1a, ph2b, ph2a,
+        )
+    }
+
+    /** Strict thresholds, same as apps/desktop/main.py: prob > 0.7 HIGH, > 0.3 MEDIUM, else LOW. */
+    private fun desktopCategory(probability: Double): RiskCategory = when {
+        probability > 0.7 -> RiskCategory.HIGH
+        probability > 0.3 -> RiskCategory.MEDIUM
+        else -> RiskCategory.LOW
     }
 
     @WorkerThread

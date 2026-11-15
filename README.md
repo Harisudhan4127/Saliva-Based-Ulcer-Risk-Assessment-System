@@ -16,7 +16,7 @@
 
 <br/>
 
-> **A research prototype that estimates oral ulcer risk from a small set of lifestyle and pH features. It is not a diagnostic device and is not clinically validated.**
+> **A research prototype that estimates oral ulcer risk from a small set of lifestyle and pH features. It is not a diagnostic device.**
 
 <br/>
 
@@ -265,7 +265,7 @@ desktop app depends on **PyQt5 (GPL v3)**; this has not been legally reviewed
 ## ⚠️ Disclaimer
 
 > This system is a **research prototype** developed as an academic project.
-> It has **not been clinically validated** and must **not** be used as a
+> It is for research and decision support only and must **not** be used as a
 > substitute for professional medical diagnosis, advice or treatment. Its output
 > is a **risk estimate for research and decision support**, not a diagnosis.
 > Always consult a qualified healthcare professional for medical decisions.

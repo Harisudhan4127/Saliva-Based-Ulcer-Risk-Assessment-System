@@ -62,6 +62,7 @@ abstract class SyncSharedAssetsTask : DefaultTask() {
             "author.json",
             "preprocessing.json",
             "swbra_spec.json",
+            "about.md",
             "model/model.onnx",
             "model/metadata.json",
             "model/SHA256SUMS",

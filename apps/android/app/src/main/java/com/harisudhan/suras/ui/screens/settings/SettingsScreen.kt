@@ -259,6 +259,17 @@ fun SettingsScreen(
                     }
                 }
             }
+
+            item {
+                Text(
+                    text = stringResource(R.string.settings_policy_footer),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 8.dp, bottom = 4.dp),
+                )
+            }
         }
     }
 

@@ -176,6 +176,6 @@
       { "category": "LOW", "operator": "<=", "threshold": 0.3 }
     ],
     "boundaryNotes": "Operators are strict. A probability exactly equal to 0.7 is MEDIUM; exactly equal to 0.3 is LOW.",
-    "validation": "UNKNOWN. These are application decision thresholds copied from the source code, not clinically validated cut-offs. See docs/OPEN_QUESTIONS.md."
+    "validation": "UNKNOWN. These are application decision thresholds copied from the source code; no clinical validation. See docs/OPEN_QUESTIONS.md."
   }
 }

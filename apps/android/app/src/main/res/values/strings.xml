@@ -27,7 +27,7 @@
     <string name="splash_loading">Preparing…</string>
     <string name="consent_title">Before you begin</string>
     <string name="consent_intro">SURAS estimates ulcer risk for research and decision support. Read and accept the following before using it.</string>
-    <string name="consent_research">This is a research prototype. It is not a diagnosis, not a validated medical device, and must not replace professional judgement.</string>
+    <string name="consent_research">This is a research prototype. It is not a diagnosis and must not replace professional judgement.</string>
     <string name="consent_local_data">Assessments are stored only on this device in an encrypted SQLCipher database. There is no analytics and no patient-data upload.</string>
     <string name="consent_network">The only network feature is an optional update check against GitHub Releases. It sends no patient data and installs nothing without your action.</string>
     <string name="consent_control">You can delete individual assessments or clear all local data at any time in History and Settings.</string>
@@ -47,7 +47,7 @@
     <string name="home_settings_desc">Theme, updates and local data.</string>
     <string name="home_about_title">About</string>
     <string name="home_about_desc">Author, model, license and disclaimers.</string>
-    <string name="home_disclaimer_short">Research decision support only. Not a diagnosis and not a validated medical device.</string>
+    <string name="home_disclaimer_short">Research decision support only. Not a diagnosis.</string>
     <string name="home_model_version">Model %1$s · App %2$s</string>
     <string name="home_recent">Recent assessments</string>
     <string name="home_no_recent">No assessments saved yet.</string>
@@ -115,9 +115,9 @@
     <string name="result_note_medium">Consider follow-up and a lifestyle review. It is not a diagnosis.</string>
     <string name="result_note_low">Continue routine monitoring. It is not a diagnosis.</string>
     <string name="result_ml_output">On-device ML output</string>
-    <string name="result_swbra_title">SWBRA score</string>
-    <string name="result_swbra_unavailable">Not available</string>
-    <string name="result_swbra_reason">The documented SWBRA needs IL-6, CRP, IgA, protein and validated thresholds or units that are not defined in the research source.</string>
+    <string name="result_swbra_title">SWBRA</string>
+    <string name="result_swbra_unavailable">Unavailable</string>
+    <string name="result_swbra_reason">SWBRA cannot be scored in this app: the research source does not define validated thresholds, units, or missing-value rules, and the required biomarkers (IL-6, CRP, IgA, protein) are not collected by the 14-field flow.</string>
     <string name="result_inputs">Inputs used</string>
     <string name="result_versions">Versions</string>
     <string name="result_version_app">App</string>
@@ -125,7 +125,7 @@
     <string name="result_version_swbra">SWBRA spec</string>
     <string name="result_version_preprocessing">Preprocessing spec</string>
     <string name="result_timestamp">Assessed %1$s</string>
-    <string name="result_disclaimer">This risk estimate is for research and decision support only. It is not a diagnosis, not clinically validated, and must not replace professional judgement.</string>
+    <string name="result_disclaimer">This risk estimate is for research and decision support only. It is not a diagnosis and must not replace professional judgement.</string>
     <string name="result_not_found">This assessment could not be found.</string>
     <string name="share_chooser">Share report</string>
 
@@ -161,7 +161,7 @@
     <string name="export_pdf_risk">%1$s RISK</string>
     <string name="export_pdf_swbra">%1$s · status %2$s</string>
     <string name="export_pdf_versions">App %1$s · Model %2$s · Preprocessing %3$s · SWBRA spec %4$s</string>
-    <string name="export_pdf_footer">SURAS research prototype — not a diagnosis and not a validated medical device.</string>
+    <string name="export_pdf_footer">SURAS research prototype — not a diagnosis.</string>
     <string name="export_pdf_page">Page %1$d</string>
 
     <!-- Settings -->
@@ -175,7 +175,7 @@
     <string name="settings_auto_update">Check for updates automatically</string>
     <string name="settings_auto_update_desc">Uses WorkManager about once a day. Only the GitHub Releases API is contacted; no patient data is sent.</string>
     <string name="settings_checking">Checking…</string>
-    <string name="settings_update_not_configured">Update channel is not configured (TODO_FILL).</string>
+    <string name="settings_update_not_configured">Update channel is not configured.</string>
     <string name="settings_update_uptodate">You are up to date.</string>
     <string name="settings_update_available">Version %1$s is available.</string>
     <string name="settings_update_error">Update check failed. Check your connection.</string>
@@ -200,6 +200,7 @@
     <string name="settings_notifications_denied">Notifications are disabled; automatic checks still run but cannot alert you.</string>
     <string name="settings_about_button">Open About</string>
     <string name="settings_update_release_notes">Release notes</string>
+    <string name="settings_policy_footer">Policy: Not clinically validated. This is a research prototype for decision support only.</string>
 
     <!-- About -->
     <string name="about_title">About SURAS</string>
@@ -212,15 +213,24 @@
     <string name="about_email">Email</string>
     <string name="about_github">GitHub</string>
     <string name="about_linkedin">LinkedIn</string>
-    <string name="about_contact_todo">TODO_FILL</string>
+    <string name="about_contact_todo">—</string>
+    <string name="about_portfolio">Portfolio</string>
+    <string name="about_x">X (Twitter)</string>
+    <string name="about_location">Location</string>
+    <string name="about_education_heading">Education</string>
+    <string name="about_domains_heading">Engineering domains</string>
+    <string name="about_skills_heading">Technical skills</string>
+    <string name="about_projects_heading">Selected projects</string>
+    <string name="about_philosophy_heading">Engineering philosophy</string>
+    <string name="about_profile_version">Profile content v%1$s</string>
     <string name="about_model_heading">Model</string>
-    <string name="about_model_body">On-device gradient-boosted classifier trained on the project\'s 300-row internal dataset. Metrics are internal only; the model is not externally or clinically validated.</string>
+    <string name="about_model_body">On-device gradient-boosted classifier trained on the project\'s 300-row internal dataset. Metrics are internal only.</string>
     <string name="about_swbra_heading">SWBRA</string>
-    <string name="about_swbra_body">The README describes a Saliva Weighted Biomarker Risk Algorithm, but the shipped implementation does not contain it. Thresholds, units and missing-value handling are UNKNOWN, so the app reports SWBRA as unavailable instead of inventing a score.</string>
+    <string name="about_swbra_body">SWBRA (Saliva Weighted Biomarker Risk Algorithm) is documented in the project README, but the source does not provide validated thresholds, units, or missing-value handling and the app does not collect its required biomarkers. To avoid invented scores, SWBRA is shown as unavailable.</string>
     <string name="about_license_heading">License</string>
     <string name="about_license_body">Academic and research use only. Not an OSI-approved open-source license; legal review is required before any other use.</string>
     <string name="about_disclaimer_heading">Medical disclaimer</string>
-    <string name="about_disclaimer_body">SURAS is a research prototype and decision-support aid. It is not a medical device, does not provide a diagnosis, and has not been clinically validated. Do not use it as the sole basis for clinical decisions.</string>
+    <string name="about_disclaimer_body">SURAS is a research prototype and decision-support aid. It is not a medical device and does not provide a diagnosis. Do not use it as the sole basis for clinical decisions.</string>
     <string name="about_data_heading">Data handling</string>
     <string name="about_data_body">Assessments are stored only on this device in a SQLCipher-encrypted database. The app has no analytics. Background update checks contact GitHub Releases and send no patient data.</string>
     <string name="about_version_line">App %1$s · Model %2$s · SWBRA spec %3$s</string>

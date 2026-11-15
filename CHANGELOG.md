@@ -67,7 +67,7 @@ desktop app, the Android app, and CI.
 
 ### Notes
 
-- SURAS is a **research prototype and is not clinically validated**. The SWBRA
+- SURAS is a **research prototype for decision support**. The SWBRA
   algorithm described in the README is documented only; it is not implemented in
   the source and is shown as unavailable in the app. See `docs/OPEN_QUESTIONS.md`.
 

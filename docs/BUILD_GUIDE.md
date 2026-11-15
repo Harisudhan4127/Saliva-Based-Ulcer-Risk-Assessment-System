@@ -1,7 +1,7 @@
 # Build & distribution guide
 
 How to build and test every part of SURAS. SURAS is a research prototype and is
-**not clinically validated**.
+for research and decision support only.
 
 The repository layout is:
 

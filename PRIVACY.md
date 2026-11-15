@@ -60,3 +60,9 @@ SURAS is not intended for children. It processes health-related data; anyone
 deploying it with real patient data must satisfy the data-protection law that
 applies to them (for example GDPR, HIPAA, or India's DPDP Act). No such
 assessment has been performed here.
+
+## Policy
+
+Not clinically validated. SURAS is a research prototype for decision support
+only and is not a diagnosis. No regulatory or compliance assessment has been
+performed.

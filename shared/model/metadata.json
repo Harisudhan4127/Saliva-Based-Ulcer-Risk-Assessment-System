@@ -1,6 +1,6 @@
 {
   "algorithm": "GradientBoostingClassifier",
-  "clinicalValidation": "UNKNOWN - internal dataset metrics only; not externally or clinically validated.",
+  "clinicalValidation": "UNKNOWN - internal dataset metrics only; no external validation performed.",
   "createdAt": "2026-11-13T08:41:44.403378+00:00",
   "hyperparameters": {
     "learning_rate": 0.1,

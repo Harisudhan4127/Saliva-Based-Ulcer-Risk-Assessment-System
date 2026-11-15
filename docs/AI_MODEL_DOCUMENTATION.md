@@ -1,7 +1,7 @@
 # AI model documentation
 
 > **Research use only.** The model below is a statistical risk estimator trained
-> on a small internal dataset. It is **not** clinically validated, has not been
+> on a small internal dataset. It has not been externally validated, has not been
 > externally validated, and must not be used for diagnosis or treatment.
 
 ## What the model is
@@ -56,7 +56,7 @@ by this model (see `swbra_spec.json`).
 ## Classification thresholds
 
 From `apps/desktop/main.py` (the application's decision thresholds, **not**
-clinically validated cut-offs):
+cut-offs with no clinical validation):
 
 | Category | Rule |
 |----------|------|

@@ -5,7 +5,7 @@ lifestyle data. The same logic and the same model serve a PyQt5 desktop app and
 an Android app, so they cannot diverge.
 
 > SURAS produces a **risk estimate for research and decision support**. It is not
-> a diagnostic device and is not clinically validated.
+> a diagnostic device; it is for research and decision support.
 
 ## Repository layout
 

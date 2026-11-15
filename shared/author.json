@@ -1,11 +1,20 @@
 {
-  "name": "Harisudhan",
-  "role": "Final-year project author",
-  "degree": "B.Tech Artificial Intelligence and Machine Learning",
-  "project": "Saliva-Based Ulcer Risk Assessment System (SURAS)",
-  "email": "",
-  "github": "",
-  "linkedin": "",
-  "status": "TODO_FILL",
-  "notes": "Only values stated in README.md are populated. Email, GitHub and LinkedIn are intentionally empty and must be filled by the author; they were not invented."
+  "name": "Harisudhan Baskaran",
+  "title": "Aspiring Software Developer · B.Tech student (Artificial Intelligence and Machine Learning)",
+  "intro": "I enjoy building practical technology solutions that combine software development, AI, and embedded systems. My interests include full-stack development, intelligent applications, IoT, and system-level engineering. I focus on learning through hands-on projects, exploring new technologies, and turning ideas into functional applications.",
+  "goal": "My goal is to grow as an engineer by developing reliable, efficient, and meaningful technology solutions.",
+  "whatIDo": "Software Development | AI & ML | IoT & Embedded Systems",
+  "approach": "Learn, Build, Test, Improve",
+  "education": {
+    "degree": "B.Tech, Artificial Intelligence and Machine Learning",
+    "institution": "Manakula Vinayagar Institute of Technology"
+  },
+  "links": {
+    "portfolio": "https://harisudhan4127.github.io/Portfolio/",
+    "github": "https://github.com/Harisudhan4127",
+    "linkedin": "https://in.linkedin.com/in/harisudhan-baskaran",
+    "email": "harisudhan4127@gmail.com"
+  },
+  "contactNote": "For professional networking, technical collaboration, and project opportunities, feel free to connect through email or LinkedIn.",
+  "profileVersion": "2.1"
 }

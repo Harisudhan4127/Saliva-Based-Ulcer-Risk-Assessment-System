@@ -375,7 +375,7 @@ def main() -> int:
             "nestedCv": {k: v["mean"] for k, v in (report.get("nestedCv") or {}).items()},
         },
         "parity": report["finalModel"]["parity"],
-        "clinicalValidation": "UNKNOWN - internal dataset metrics only; not externally or clinically validated.",
+        "clinicalValidation": "UNKNOWN - internal dataset metrics only; no external validation performed.",
     }
     METADATA_PATH.write_text(json.dumps(metadata, indent=2, sort_keys=True) + "\n")
 

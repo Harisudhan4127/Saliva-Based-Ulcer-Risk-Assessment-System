@@ -7,7 +7,7 @@ body:
     attributes:
       value: |
         Thanks for taking the time to file a report. SURAS is a research
-        prototype and is **not clinically validated** — please do not include
+        prototype for research and decision support only — please do not include
         real patient data in this issue.
   - type: dropdown
     id: platform
