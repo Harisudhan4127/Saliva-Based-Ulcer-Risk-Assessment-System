@@ -106,3 +106,9 @@ Thumbs.db
 
 # ─── Generated project tree (scripts/file_structure.py) ────────────────────
 project_structure.txt
+
+# Allow explicitly tracked release artifacts (user-requested)
+!Releases/**/*.apk
+!Releases/**/*.aab
+!Releases/**/SHA256SUMS
+!Releases/**/*.sha256
